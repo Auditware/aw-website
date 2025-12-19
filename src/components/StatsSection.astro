@@ -1,0 +1,92 @@
+---
+export interface Props {
+  title?: string;
+  stats?: Array<{
+    number: string;
+    label: string;
+  }>;
+}
+
+const { 
+  title = "Security by the Numbers",
+  stats = [
+    { number: "10+", label: "Years Experience" },
+    { number: "100+", label: "Security Audits" },
+    { number: "$50M+", label: "Assets Protected" },
+    { number: "24/7", label: "Monitoring" }
+  ]
+} = Astro.props;
+---
+
+<section class="stats-section section-sm">
+  <div class="container">
+    <div class="stats-content text-center">
+      <h2 class="h3 stats-title">{title}</h2>
+      <div class="stats">
+        {stats.map((stat) => (
+          <div class="stat">
+            <div class="stat-number">{stat.number}</div>
+            <div class="stat-label">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stats-section {
+    padding: var(--spacing-20) 0;
+    background: var(--color-background-secondary);
+  }
+  
+  .stats-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .stats-title {
+    margin-bottom: var(--spacing-12);
+    color: var(--color-text-primary);
+  }
+  
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-8);
+    justify-items: center;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-black);
+    color: var(--color-primary-400);
+    line-height: var(--line-height-none);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .stat-label {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  @media (max-width: 767px) {
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-6);
+    }
+    
+    .stat-number {
+      font-size: var(--font-size-3xl);
+    }
+    
+    .stat-label {
+      font-size: var(--font-size-sm);
+    }
+  }
+</style>

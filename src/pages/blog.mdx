@@ -6,24 +6,16 @@ image: "/images/HP-Grph-image.png"
 ---
 
 import Navbar from '../components/Navbar.astro';
+import SimplePageHeader from '../components/SimplePageHeader.astro';
 import Button from '../components/Button.astro';
+import Footer from '../components/Footer.astro';
 
 <Navbar />
 
-<div class="section grey-section">
-  <div class="cta-wrapper">
-    <div class="a-header-block">
-      <div class="a-header-content">
-        <div class="a-margin-bottom-48">
-          <h1 class="a-h1-heading">Blog</h1>
-        </div>
-        <p class="a-paragraph-regular">
-          Read the latest insights on smart contract security, Web3 OpSec, and blockchain auditing from our team of security experts.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+<SimplePageHeader 
+  title="Blog"
+  description="Read the latest insights on smart contract security, Web3 OpSec, and blockchain auditing from our team of security experts."
+/>
 
 <div class="blog-content">
   <div class="container">
@@ -39,30 +31,64 @@ import Button from '../components/Button.astro';
   </div>
 </div>
 
-<div class="section">
-  <div class="container">
-    <div class="footer-wrapper">
-      <a href="/" class="footer-brand">
-        <img src="/images/Logo-hi-vis.png" loading="lazy" width="182" alt="Auditware Logo" class="footer-brand-image" />
-        <div class="footer-paragraph-holder">
-          <p class="paragraph-26">Leading security platform and auditing firm</p>
-        </div>
-      </a>
-      <div class="footer-content">
-        <div class="footer-block">
-          <div class="title-small">Company</div>
-          <a href="/about-us" class="footer-link">About Us</a>
-          <a href="/press" class="footer-link">Press</a>
-          <a href="/radar" class="footer-link">Radar</a>
-          <a href="/blog" class="footer-link w--current">Blog</a>
-        </div>
-        <div class="footer-block">
-          <div class="title-small">Contact us</div>
-          <a href="https://discord.gg/wefVH8NYbb" target="_blank" class="footer-link">Discord</a>
-          <a href="https://twitter.com/audit_wizard" target="_blank" class="footer-link">Twitter</a>
-          <a href="https://www.linkedin.com/company/auditwareio/" class="footer-link">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<Footer />
+
+<style>
+  .blog-content {
+    padding: 80px 0;
+    background: #000000;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .blog-placeholder {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #111111;
+    border: 1px solid #333333;
+    border-radius: 16px;
+    padding: 48px 32px;
+  }
+
+  .blog-placeholder-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
+
+  .blog-placeholder-text {
+    color: #a0a0a0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .blog-cta {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 767px) {
+    .blog-content {
+      padding: 60px 0;
+    }
+
+    .blog-placeholder {
+      padding: 32px 24px;
+    }
+
+    .blog-placeholder-title {
+      font-size: 1.75rem;
+    }
+
+    .blog-placeholder-text {
+      font-size: 1rem;
+    }
+  }
+</style>

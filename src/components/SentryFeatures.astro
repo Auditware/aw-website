@@ -1,0 +1,125 @@
+---
+const { 
+  features = []
+} = Astro.props;
+---
+
+{features.map((feature, index) => (
+  <section class={`hero-heading-${index % 2 === 0 ? 'left' : 'right'}`}>
+    {index % 2 === 1 && (
+      <section class="hero-heading-right-2">
+        <div class="container-7">
+          <div class="hero-wrapper-5">
+            <div class="hero-split-6">
+              <img 
+                src={feature.image} 
+                loading="lazy" 
+                alt={feature.imageAlt} 
+                class="shadow-two-6"
+              />
+            </div>
+            <div class="hero-split-6">
+              <h1 class="heading-20">{feature.title}</h1>
+              <p class="margin-bottom-24px-7">
+                {feature.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+    {index % 2 === 0 && (
+      <div class="container-6">
+        <div class="hero-wrapper-4">
+          <div class="hero-split-5">
+            <h1 class="heading-18">{feature.title}</h1>
+            <p class="margin-bottom-24px-5">
+              {feature.description}
+            </p>
+          </div>
+          <div class="hero-split-5">
+            <img 
+              src={feature.image} 
+              loading="lazy" 
+              alt={feature.imageAlt} 
+              class="shadow-two-5"
+            />
+          </div>
+        </div>
+      </div>
+    )}
+    <div class="container-6"></div>
+  </section>
+))}
+
+<style>
+  .container-6, .container-7 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hero-heading-left, .hero-heading-right {
+    padding: 80px 0;
+    background: #111111;
+  }
+
+  .hero-heading-right-2 {
+    padding: 0;
+  }
+
+  .hero-wrapper-4, .hero-wrapper-5 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .hero-split-5, .hero-split-6 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading-18, .heading-20 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
+
+  .margin-bottom-24px-5, .margin-bottom-24px-7 {
+    color: #a0a0a0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .shadow-two-5, .shadow-two-6 {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  }
+
+  @media (max-width: 991px) {
+    .hero-wrapper-4, .hero-wrapper-5 {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      text-align: center;
+    }
+
+    .hero-heading-left, .hero-heading-right {
+      padding: 60px 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .heading-18, .heading-20 {
+      font-size: 1.75rem;
+    }
+
+    .margin-bottom-24px-5, .margin-bottom-24px-7 {
+      font-size: 1rem;
+    }
+  }
+</style>

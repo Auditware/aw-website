@@ -1,0 +1,192 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  highlights?: Array<{
+    title: string;
+    description: string;
+  }>;
+  metrics?: Array<{
+    title: string;
+    value: string;
+    trend: string;
+  }>;
+}
+
+const { 
+  title = "Proven Security Expertise",
+  description = "Our security team brings over a decade of experience from leading technology companies including Apple and Amazon. We understand both traditional and Web3 security challenges.",
+  highlights = [
+    {
+      title: "Primary Risk Vectors",
+      description: "Credential compromise, social engineering, malware infection, blind signing, and insider threats"
+    },
+    {
+      title: "Compromise Detection",
+      description: "Average detection time reduced from days to minutes with our monitoring platform"
+    },
+    {
+      title: "Industry Recognition",
+      description: "Trusted by leading DeFi protocols and recognized security researchers"
+    }
+  ],
+  metrics = [
+    {
+      title: "Threats Prevented",
+      value: "2,847",
+      trend: "+23% this month"
+    },
+    {
+      title: "Response Time",
+      value: "Less than 5min",
+      trend: "Average alert response"
+    },
+    {
+      title: "Uptime",
+      value: "99.9%",
+      trend: "Platform availability"
+    }
+  ]
+} = Astro.props;
+---
+
+<section class="expertise-section section-sm">
+  <div class="container">
+    <div class="expertise-content">
+      <div class="expertise-grid">
+        <div class="expertise-text">
+          <h2 class="h3">{title}</h2>
+          <p class="body-large expertise-description">
+            {description}
+          </p>
+          <div class="expertise-highlights">
+            {highlights.map((highlight) => (
+              <div class="expertise-item">
+                <h4 class="h6">{highlight.title}</h4>
+                <p class="body-small">{highlight.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="expertise-visual">
+          <div class="expertise-metrics">
+            {metrics.map((metric) => (
+              <div class="metric-card">
+                <div class="metric-title">{metric.title}</div>
+                <div class="metric-value">{metric.value}</div>
+                <div class="metric-trend">{metric.trend}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .expertise-section {
+    padding: var(--spacing-20) 0;
+    background: var(--color-background-secondary);
+  }
+  
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-16);
+    align-items: center;
+  }
+  
+  .expertise-text h2 {
+    margin-bottom: var(--spacing-6);
+    color: var(--color-text-primary);
+  }
+  
+  .expertise-description {
+    margin-bottom: var(--spacing-8);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+  
+  .expertise-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
+  }
+  
+  .expertise-item h4 {
+    margin-bottom: var(--spacing-2);
+    color: var(--color-text-primary);
+  }
+  
+  .expertise-item p {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+  
+  .expertise-metrics {
+    display: grid;
+    gap: var(--spacing-4);
+  }
+  
+  .metric-card {
+    background: var(--color-background-primary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-6);
+    text-align: center;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+  
+  .metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .metric-title {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-3);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  .metric-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-400);
+    margin-bottom: var(--spacing-2);
+    line-height: var(--line-height-tight);
+  }
+  
+  .metric-trend {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+  }
+  
+  @media (max-width: 1199px) {
+    .expertise-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-12);
+      text-align: center;
+    }
+    
+    .expertise-metrics {
+      max-width: 600px;
+      margin: 0 auto;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .expertise-metrics {
+      grid-template-columns: 1fr;
+      max-width: 300px;
+    }
+    
+    .expertise-highlights {
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+</style>

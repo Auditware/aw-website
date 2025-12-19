@@ -1,0 +1,184 @@
+---
+export interface Props {
+  logo?: {
+    src: string;
+    alt: string;
+    width?: number;
+  };
+  tagline?: string;
+  sections?: Array<{
+    title: string;
+    links: Array<{
+      text: string;
+      href: string;
+      external?: boolean;
+    }>;
+  }>;
+}
+
+const { 
+  logo = {
+    src: "/images/Logo-hi-vis.png",
+    alt: "Auditware Logo",
+    width: 182
+  },
+  tagline = "Leading security platform and auditing firm",
+  sections = [
+    {
+      title: "Company",
+      links: [
+        { text: "About Us", href: "/about-us" },
+        { text: "Press", href: "/press" },
+        { text: "Tools", href: "/tools" },
+        { text: "Blog", href: "/blog" }
+      ]
+    },
+    {
+      title: "Contact us",
+      links: [
+        { text: "Discord", href: "https://discord.gg/wefVH8NYbb", external: true },
+        { text: "Twitter", href: "https://twitter.com/audit_wizard", external: true },
+        { text: "LinkedIn", href: "https://www.linkedin.com/company/auditwareio/", external: true }
+      ]
+    }
+  ]
+} = Astro.props;
+---
+
+<footer class="footer section">
+  <div class="container">
+    <div class="footer-wrapper">
+      <a href="/" class="footer-brand">
+        <img 
+          src={logo.src} 
+          loading="lazy" 
+          width={logo.width} 
+          alt={logo.alt} 
+          class="footer-brand-image" 
+        />
+        <div class="footer-paragraph-holder">
+          <p class="paragraph-26">{tagline}</p>
+        </div>
+      </a>
+      <div class="footer-content">
+        {sections.map((section) => (
+          <div class="footer-block">
+            <div class="title-small">{section.title}</div>
+            {section.links.map((link) => (
+              <a 
+                href={link.href} 
+                class="footer-link"
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+              >
+                {link.text}
+              </a>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: var(--spacing-16) 0;
+    background: var(--color-background-primary);
+    border-top: 1px solid var(--color-border-primary);
+  }
+  
+  .footer-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-12);
+  }
+  
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    max-width: 300px;
+  }
+  
+  .footer-brand-image {
+    height: auto;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .footer-paragraph-holder {
+    width: 100%;
+  }
+  
+  .paragraph-26 {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    gap: var(--spacing-12);
+    flex: 1;
+    justify-content: flex-end;
+  }
+  
+  .footer-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+    min-width: 120px;
+  }
+  
+  .title-small {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-2);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+  }
+  
+  .footer-link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-base);
+    transition: color var(--transition-base);
+  }
+  
+  .footer-link:hover {
+    color: var(--color-primary-400);
+  }
+  
+  @media (max-width: 991px) {
+    .footer-wrapper {
+      flex-direction: column;
+      gap: var(--spacing-8);
+      text-align: center;
+    }
+    
+    .footer-brand {
+      align-items: center;
+      max-width: none;
+    }
+    
+    .footer-content {
+      justify-content: center;
+      gap: var(--spacing-8);
+    }
+  }
+  
+  @media (max-width: 479px) {
+    .footer-content {
+      flex-direction: column;
+      gap: var(--spacing-6);
+    }
+    
+    .footer-block {
+      text-align: center;
+    }
+  }
+</style>

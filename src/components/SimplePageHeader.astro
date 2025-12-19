@@ -1,0 +1,115 @@
+---
+const { 
+  title = "Page Title",
+  description = "Page description goes here.",
+  ctaText,
+  ctaHref,
+  showCta = false
+} = Astro.props;
+---
+
+<div class="section grey-section">
+  <div class="cta-wrapper">
+    <div class="a-header-block">
+      <div class="a-header-content">
+        <div class="a-margin-bottom-48">
+          <h1 class="a-h1-heading">{title}</h1>
+        </div>
+        <p class="a-paragraph-regular">
+          {description}
+        </p>
+        {showCta && ctaText && ctaHref && (
+          <div class="a-header-button-wrapper">
+            <a href={ctaHref} class="button-3">{ctaText}</a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .section {
+    position: relative;
+  }
+
+  .grey-section {
+    background: #111111;
+    padding: 0;
+  }
+
+  .cta-wrapper {
+    padding: 80px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .a-header-block {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .a-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .a-margin-bottom-48 {
+    margin-bottom: 48px;
+  }
+
+  .a-h1-heading {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .a-paragraph-regular {
+    font-size: 1.25rem;
+    color: #a0a0a0;
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  .a-header-button-wrapper {
+    margin-top: 16px;
+  }
+
+  .button-3 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 16px 32px;
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .button-3:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 99, 255, 0.4);
+  }
+
+  @media (max-width: 767px) {
+    .a-h1-heading {
+      font-size: 2.5rem;
+    }
+
+    .a-paragraph-regular {
+      font-size: 1.125rem;
+    }
+
+    .cta-wrapper {
+      padding: 60px 20px;
+    }
+  }
+</style>

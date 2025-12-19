@@ -6,74 +6,47 @@ image: "/images/HP-Grph-image.png"
 ---
 
 import Navbar from '../components/Navbar.astro';
-import Button from '../components/Button.astro';
+import SimplePageHeader from '../components/SimplePageHeader.astro';
+import PressGrid from '../components/PressGrid.astro';
+import Footer from '../components/Footer.astro';
 
 <Navbar />
 
-<div class="section grey-section">
-  <div class="cta-wrapper">
-    <div class="a-header-block">
-      <div class="a-header-content">
-        <div class="a-margin-bottom-48">
-          <h1 class="a-h1-heading">Press Kit</h1>
-        </div>
-        <p class="a-paragraph-regular">
-          Here you can find the visual assets you need to reference Audit Wizard for your content or publication. Got any proposals or inquiries?
-        </p>
-        <div class="a-header-button-wrapper">
-          <Button href="https://calendly.com/d/cnqr-49f-xdy/auditware-consultation" class="button-3">Get in touch</Button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<SimplePageHeader 
+  title="Press Kit"
+  description="Here you can find the visual assets you need to reference Audit Wizard for your content or publication. Got any proposals or inquiries?"
+  showCta={true}
+  ctaText="Get in touch"
+  ctaHref="https://calendly.com/d/cnqr-49f-xdy/auditware-consultation"
+/>
 
-<div class="press-grid">
-  <div class="press-item">
-    <img src="/images/tryagain.png" loading="lazy" width="300" alt="Auditware Main Logo" class="press-logo" />
-    <div class="text-block-7">Main logo - Light background</div>
-  </div>
-  
-  <div class="press-item">
-    <img src="/images/Icon-black.png" loading="lazy" width="300" alt="Auditware Icon Logo" class="press-logo" />
-    <div class="text-block-7">Icon logo - Dark background</div>
-  </div>
-  
-  <div class="press-item">
-    <img src="/images/Long-logo-dark.png" loading="lazy" width="454" alt="Auditware Long Logo Dark" class="press-logo" />
-    <div class="text-block-7">Long logo - Dark background</div>
-  </div>
-  
-  <div class="press-item">
-    <img src="/images/Dark-longg.png" loading="lazy" width="442" alt="Auditware Long Logo Light" class="press-logo" />
-    <div class="text-block-7">Long logo - Light background</div>
-  </div>
-</div>
+<PressGrid 
+  pressItems={[
+    {
+      src: "/images/tryagain.png",
+      width: 300,
+      alt: "Auditware Main Logo",
+      description: "Main logo - Light background"
+    },
+    {
+      src: "/images/Icon-black.png",
+      width: 300,
+      alt: "Auditware Icon Logo",
+      description: "Icon logo - Dark background"
+    },
+    {
+      src: "/images/Long-logo-dark.png",
+      width: 454,
+      alt: "Auditware Long Logo Dark",
+      description: "Long logo - Dark background"
+    },
+    {
+      src: "/images/Dark-longg.png",
+      width: 442,
+      alt: "Auditware Long Logo Light",
+      description: "Long logo - Light background"
+    }
+  ]}
+/>
 
-<div class="section">
-  <div class="container">
-    <div class="footer-wrapper">
-      <a href="/" class="footer-brand">
-        <img src="/images/Logo-hi-vis.png" loading="lazy" width="182" alt="Auditware Logo" class="footer-brand-image" />
-        <div class="footer-paragraph-holder">
-          <p class="paragraph-26">Leading security platform and auditing firm</p>
-        </div>
-      </a>
-      <div class="footer-content">
-        <div class="footer-block">
-          <div class="title-small">Company</div>
-          <a href="/about-us" class="footer-link">About Us</a>
-          <a href="/press" class="footer-link w--current">Press</a>
-          <a href="/radar" class="footer-link">Radar</a>
-          <a href="/blog" class="footer-link">Blog</a>
-        </div>
-        <div class="footer-block">
-          <div class="title-small">Contact us</div>
-          <a href="https://discord.gg/wefVH8NYbb" target="_blank" class="footer-link">Discord</a>
-          <a href="https://twitter.com/audit_wizard" target="_blank" class="footer-link">Twitter</a>
-          <a href="https://www.linkedin.com/company/auditwareio/" class="footer-link">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<Footer />

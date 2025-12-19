@@ -7,8 +7,13 @@ description: "Industry-leading operational security audits for web3 organization
 import Navbar from '../components/Navbar.astro';
 import ModernHero from '../components/ModernHero.astro';
 import LogoCarousel from '../components/LogoCarousel.astro';
+import FrameworksSection from '../components/FrameworksSection.astro';
 import ServiceToggle from '../components/ServiceToggle.astro';
 import FeatureStack from '../components/FeatureStack.astro';
+import StatsSection from '../components/StatsSection.astro';
+import ExpertiseSection from '../components/ExpertiseSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
 
 <Navbar />
 
@@ -51,40 +56,7 @@ import FeatureStack from '../components/FeatureStack.astro';
   ]}
 />
 
-<section class="frameworks-section section-sm">
-  <div class="container">
-    <div class="frameworks-content text-center">
-      <h2 class="h3 frameworks-title">Built on Industry Standards</h2>
-      <div class="frameworks-grid">
-        <div class="framework-card">
-          <div class="framework-header">
-            <img src="/images/W3OS-Graphic.png" alt="W3OS Logo" class="framework-logo" />
-            <h3 class="h5">W3OS Framework</h3>
-          </div>
-          <p class="body-base">
-            The Web3 Operational Security Standard (W3OS) provides comprehensive guidelines for operational security in decentralized organizations. We ensure full compliance with W3OS requirements, covering everything from key management to social engineering prevention.
-          </p>
-          <a href="https://github.com/W3OSC/web3-opsec-standard" class="btn btn-ghost btn-sm">
-            View Standard →
-          </a>
-        </div>
-        
-        <div class="framework-card">
-          <div class="framework-header">
-            <img src="/images/framework-logomark-circle-blue.svg" alt="SEAL Logo" class="framework-logo" />
-            <h3 class="h5">SEAL Certification</h3>
-          </div>
-          <p class="body-base">
-            Security Alliance's SEAL (Security Engineering and Auditing Language) framework ensures systematic security assessment. Our audits follow SEAL methodology for consistent, thorough evaluation of your organization's security posture.
-          </p>
-          <a href="https://frameworks.securityalliance.org/" class="btn btn-ghost btn-sm">
-            Learn More →
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<FrameworksSection />
 
 <ServiceToggle 
   title="Comprehensive Security Services"
@@ -184,131 +156,10 @@ import FeatureStack from '../components/FeatureStack.astro';
   ]}
 />
 
-<section class="stats-section section-sm">
-  <div class="container">
-    <div class="stats-content text-center">
-      <h2 class="h3 stats-title">Security by the Numbers</h2>
-      <div class="stats">
-        <div class="stat">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">100+</div>
-          <div class="stat-label">Security Audits</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">$50M+</div>
-          <div class="stat-label">Assets Protected</div>
-        </div>
-        <div class="stat">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Monitoring</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<StatsSection />
 
-<section class="expertise-section section-sm">
-  <div class="container">
-    <div class="expertise-content">
-      <div class="expertise-grid">
-        <div class="expertise-text">
-          <h2 class="h3">Proven Security Expertise</h2>
-          <p class="body-large expertise-description">
-            Our security team brings over a decade of experience from leading technology companies including Apple and Amazon. We understand both traditional and Web3 security challenges.
-          </p>
-          <div class="expertise-highlights">
-            <div class="expertise-item">
-              <h4 class="h6">Primary Risk Vectors</h4>
-              <p class="body-small">Credential compromise, social engineering, malware infection, blind signing, and insider threats</p>
-            </div>
-            <div class="expertise-item">
-              <h4 class="h6">Compromise Detection</h4>
-              <p class="body-small">Average detection time reduced from days to minutes with our monitoring platform</p>
-            </div>
-            <div class="expertise-item">
-              <h4 class="h6">Industry Recognition</h4>
-              <p class="body-small">Trusted by leading DeFi protocols and recognized security researchers</p>
-            </div>
-          </div>
-        </div>
-        <div class="expertise-visual">
-          <div class="expertise-metrics">
-            <div class="metric-card">
-              <div class="metric-title">Threats Prevented</div>
-              <div class="metric-value">2,847</div>
-              <div class="metric-trend">+23% this month</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-title">Response Time</div>
-              <div class="metric-value">Less than 5min</div>
-              <div class="metric-trend">Average alert response</div>
-            </div>
-            <div class="metric-card">
-              <div class="metric-title">Uptime</div>
-              <div class="metric-value">99.9%</div>
-              <div class="metric-trend">Platform availability</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<ExpertiseSection />
 
-<section class="cta-section section">
-  <div class="container">
-    <div class="cta-content text-center">
-      <h2 class="h2 cta-title">
-        Secure Your Organization Today
-      </h2>
-      <p class="body-large cta-description">
-        Don't wait for a security incident. Get comprehensive OpSec audits and monitoring from industry experts with proven experience protecting leading Web3 organizations.
-      </p>
-      <div class="cta-buttons flex gap-4 justify-center">
-        <a href="/request-an-audit" class="btn btn-primary btn-lg">
-          Request Security Audit
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a href="/sentry" class="btn btn-secondary btn-lg">
-          Learn About Sentry
-        </a>
-      </div>
-      <p class="body-small cta-disclaimer">
-        Free consultation • W3OS & SEAL compliant • Enterprise-grade security
-      </p>
-    </div>
-  </div>
-</section>
+<CTASection />
 
-<div class="section">
-  <div class="container">
-    <div class="footer-wrapper">
-      <a href="/" class="footer-brand">
-        <img src="/images/Logo-hi-vis.png" loading="lazy" width="182" alt="Auditware Logo" class="footer-brand-image" />
-        <div class="footer-paragraph-holder">
-          <p class="paragraph-26">Leading security platform and auditing firm</p>
-        </div>
-      </a>
-      <div class="footer-content">
-        <div class="footer-block">
-          <div class="title-small">Company</div>
-          <a href="/about-us" class="footer-link">About Us</a>
-          <a href="/press" class="footer-link">Press</a>
-          <a href="/tools" class="footer-link">Tools</a>
-          <a href="/blog" class="footer-link">Blog</a>
-        </div>
-        <div class="footer-block">
-          <div class="title-small">Contact us</div>
-          <a href="https://discord.gg/wefVH8NYbb" target="_blank" class="footer-link">Discord</a>
-          <a href="https://twitter.com/audit_wizard" target="_blank" class="footer-link">Twitter</a>
-          <a href="https://www.linkedin.com/company/auditwareio/" class="footer-link">LinkedIn</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<Footer />
