@@ -1,144 +1,289 @@
 ---
 layout: ../layouts/BaseLayout.astro
-title: "Auditware - Web3 OpSec Audits & Tools"
-description: "Operational security audits for web3 organizations, active compromise monitoring, and rapid incident response."
+title: "Auditware - Premier Web3 OpSec Audits & Sentry Platform"
+description: "Industry-leading operational security audits for web3 organizations. Comprehensive W3OS and SEAL compliant security posture assessment, active compromise monitoring, and the Sentry OpSec platform."
 ---
 
 import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import Button from '../components/Button.astro';
+import ModernHero from '../components/ModernHero.astro';
+import LogoCarousel from '../components/LogoCarousel.astro';
+import ServiceToggle from '../components/ServiceToggle.astro';
+import FeatureStack from '../components/FeatureStack.astro';
 
 <Navbar />
 
-<Hero 
-  title="Sentry: The OpSec Platform for Web3"
-  subtitle="Security defined by open standards"
-  description="Security posture audits, configuration guides for every service, active compromise detection, in-depth DevOps monitoring, safe transaction tools, & custom EDR"
+<ModernHero 
+  title="Premier Web3 OpSec <span class='gradient-text'>Audits & Monitoring</span>"
+  subtitle="Security Defined by Open Standards"
+  description="Comprehensive operational security audits and the Sentry OpSec platform for web3 organizations. Industry-leading expertise with W3OS and SEAL framework compliance, active compromise detection, and enterprise-grade monitoring."
+  primaryCta={{
+    text: "Request Security Audit",
+    href: "/request-an-audit"
+  }}
+  secondaryCta={{
+    text: "Learn About Sentry",
+    href: "/sentry"
+  }}
   imageUrl="/images/Frame-514-2.png"
-  imageAlt="Sentry Platform Screenshot"
+  imageAlt="Sentry Platform Dashboard"
   badges={[
-    { text: "Security defined by open standards", href: "https://github.com/W3OSC/web3-opsec-standard", icon: "/images/W3OS-Graphic.png" },
-    { text: "&", href: null },
-    { text: "SEAL Certs", href: "https://frameworks.securityalliance.org/", icon: "/images/framework-logomark-circle-blue.svg" }
+    { 
+      text: "W3OS Compliant", 
+      href: "https://github.com/W3OSC/web3-opsec-standard", 
+      icon: "/images/W3OS-Graphic.png" 
+    },
+    { 
+      text: "SEAL Certified", 
+      href: "https://frameworks.securityalliance.org/", 
+      icon: "/images/framework-logomark-circle-blue.svg" 
+    }
   ]}
 />
 
-<div class="center-text">
-  <div class="title-holder">
-    <div class="title-container">
-      <h1 class="title">Audit Everything</h1>
-      <div class="text-block-9">Vulnerabilities can occur anywhere. Cover all of your bases with industry experts that have over a decade of experience securing companies like Apple and Amazon.</div>
-    </div>
-  </div>
-  
-  <div class="fn-container-grid-2">
-    <div class="fn-solutions-card-wrapper">
-      <a href="#" class="fn-features-card-with-image slider-cards">
-        <img src="/images/code-aud.png" loading="lazy" alt="" class="fn-features-card-image" />
-        <div class="fn-features-card-column">
-          <div class="fn-heading-3">Smart Contract Security Audits</div>
-          <p class="fn-paragraph-2">Ensure the security of your EVM and Rust-Based Contracts with a thorough audit, performed by auditors who build security tools and have a deep understanding of nuanced vulnerabilities.</p>
-        </div>
-      </a>
-      
-      <a href="#" class="fn-features-card-with-image slider-cards">
-        <img src="/images/bug-aud.png" loading="lazy" alt="" class="fn-features-card-image" />
-        <div class="fn-features-card-column">
-          <div class="fn-heading-3">Application Security Audits</div>
-          <p class="fn-paragraph-2">High quality Web2 audits performed by our experienced team, delivering the quality that top tech companies demand.</p>
-        </div>
-      </a>
-      
-      <a href="#" class="fn-features-card-with-image slider-cards">
-        <img src="/images/key-aud.png" loading="lazy" alt="" class="fn-features-card-image" />
-        <div class="fn-features-card-column">
-          <div class="fn-heading-3">Operational Security Audits</div>
-          <p class="fn-paragraph-2">Holistic security reviews for your entire organization. Don't stop at just code, protect your team and your most sensitive assets.</p>
-        </div>
-      </a>
-      
-      <a href="#" class="fn-features-card-with-image slider-cards">
-        <img src="/images/infra-aud.png" loading="lazy" alt="" class="fn-features-card-image" />
-        <div class="fn-features-card-column">
-          <div class="fn-heading-3">Infrastructure Audits</div>
-          <p class="fn-paragraph-2">Code is only as secure as the server running it. Attackers can hijack deployments and compromise cloud services. Rest easy with a deep security review and continuous scanning.</p>
-        </div>
-      </a>
-    </div>
-  </div>
-</div>
+<LogoCarousel 
+  title="Trusted by Leading Web3 Organizations"
+  subtitle="Over 10 years of professional security experience"
+  logos={[
+    { name: "UDdd", src: "/images/UDdd.png", width: 120, height: 40 },
+    { name: "Spling", src: "/images/spling.png", width: 120, height: 40 },
+    { name: "Floa", src: "/images/floa-redd.png", width: 120, height: 40 },
+    { name: "Corn", src: "/images/Corn-red.png", width: 120, height: 40 }
+  ]}
+/>
 
-<div class="section grey-section">
-  <div class="early-access-features">
-    <div class="text-block-9">Building everything needed to keep your code and organization secure.</div>
-    
-    <div class="container-6">
-      <div class="hero-wrapper-4">
-        <div class="hero-split-5">
-          <img src="/images/Sentry-logo.png" loading="lazy" width="250" alt="Sentry Logo" />
-          <p class="margin-bottom-24px-5">Security goes beyond just code. We built Sentry to empower you to secure your whole team's OpSec, monitor for indicators of device compromise, and protect your accounts. All alongside our comprehensive and industry-leading OpSec audit process.</p>
-        </div>
-        <div class="hero-split-5">
-          <img src="/images/Screenshot-2025-07-14-at-2.46.51-PM.png" loading="lazy" alt="Sentry Dashboard" class="shadow-two-5" />
-        </div>
-      </div>
-    </div>
-    
-    <section class="hero-heading-right">
-      <section class="hero-heading-right-2">
-        <div class="container-7">
-          <div class="hero-wrapper-5">
-            <div class="hero-split-6">
-              <img src="/images/Dashboard-use.png" loading="lazy" alt="Audit Wizard Dashboard" class="shadow-two-6" />
-            </div>
-            <div class="hero-split-6">
-              <img src="/images/AWWDAWd.png" loading="lazy" width="300" alt="Audit Wizard Logo" />
-              <p class="margin-bottom-24px-7">Audit Wizard is an AI-powered online IDE built for auditors and devs. Dig deep into code with interactive analysis tools, write and execute tests, and vibe audit your code.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </section>
-    
-    <section class="hero-heading-left-5">
-      <div class="container-6">
-        <div class="hero-wrapper-4">
-          <div class="hero-split-5">
-            <img src="/images/Radar-header-logo.png" loading="lazy" width="210" alt="Radar Logo" />
-            <p class="margin-bottom-24px-5">Scan for vulnerabilities in Solana Rust programs with Radar's configurable Python-based rule engine. Automate continuous scanning effortlessly with GitHub integration and easily extend the base set of detectors with your own custom detectors.</p>
-          </div>
-          <div class="hero-split-5">
-            <img src="/images/Radar.png" loading="lazy" alt="Radar Scanner" class="shadow-two-5" />
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-</div>
-
-<div class="section grey-section">
+<section class="frameworks-section section-sm">
   <div class="container">
-    <div class="center-text">
-      <div class="title-holder">
-        <div class="title-container">
-          <h1 class="title">Highly Trusted</h1>
+    <div class="frameworks-content text-center">
+      <h2 class="h3 frameworks-title">Built on Industry Standards</h2>
+      <div class="frameworks-grid">
+        <div class="framework-card">
+          <div class="framework-header">
+            <img src="/images/W3OS-Graphic.png" alt="W3OS Logo" class="framework-logo" />
+            <h3 class="h5">W3OS Framework</h3>
+          </div>
+          <p class="body-base">
+            The Web3 Operational Security Standard (W3OS) provides comprehensive guidelines for operational security in decentralized organizations. We ensure full compliance with W3OS requirements, covering everything from key management to social engineering prevention.
+          </p>
+          <a href="https://github.com/W3OSC/web3-opsec-standard" class="btn btn-ghost btn-sm">
+            View Standard →
+          </a>
+        </div>
+        
+        <div class="framework-card">
+          <div class="framework-header">
+            <img src="/images/framework-logomark-circle-blue.svg" alt="SEAL Logo" class="framework-logo" />
+            <h3 class="h5">SEAL Certification</h3>
+          </div>
+          <p class="body-base">
+            Security Alliance's SEAL (Security Engineering and Auditing Language) framework ensures systematic security assessment. Our audits follow SEAL methodology for consistent, thorough evaluation of your organization's security posture.
+          </p>
+          <a href="https://frameworks.securityalliance.org/" class="btn btn-ghost btn-sm">
+            Learn More →
+          </a>
         </div>
       </div>
-      <div class="text-block-10">Our auditing team has over 10 years of professional security experience working for leading tech companies including Apple and Amazon.</div>
-    </div>
-    
-    <div class="grid">
-      <img src="/images/UDdd.png" loading="lazy" alt="Client Logo" class="image-13" />
-      <img src="/images/spling.png" loading="lazy" alt="Client Logo" class="image-14" />
-      <img src="/images/floa-redd.png" loading="lazy" alt="Client Logo" class="image-15" />
-      <img src="/images/Corn-red.png" loading="lazy" alt="Client Logo" class="image-16" />
     </div>
   </div>
-  
-  <div class="testimonails-wrapper">
-    <Button href="https://www.auditwizard.io/request-an-audit" class="button-3">Book an audit with us</Button>
+</section>
+
+<ServiceToggle 
+  title="Comprehensive Security Services"
+  subtitle="Expert-led audits and monitoring services designed to protect your entire organization"
+  services={[
+    {
+      id: "opsec-audit",
+      name: "OpSec Audits",
+      description: "Holistic security reviews covering your entire organization. We don't just look at code - we protect your team, processes, and most sensitive assets with comprehensive W3OS and SEAL compliant assessments.",
+      features: [
+        "Complete organizational security posture assessment",
+        "Team member security training and protocols",
+        "Process and workflow security analysis",
+        "Asset protection and key management review",
+        "Compliance with W3OS and SEAL frameworks",
+        "Actionable remediation roadmap"
+      ],
+      image: "/images/key-aud.png",
+      imageAlt: "Operational Security Audit Process"
+    },
+    {
+      id: "sentry-platform",
+      name: "Sentry Platform",
+      description: "Our flagship OpSec monitoring platform provides continuous security oversight for your entire organization. Monitor for device compromise, credential exposure, and operational security violations in real-time.",
+      features: [
+        "Active compromise detection and alerting",
+        "DevOps security monitoring (GitHub, CI/CD)",
+        "Frontend and DNS security monitoring", 
+        "EDR capabilities for endpoint protection",
+        "Credential and account monitoring",
+        "Team-wide OpSec compliance tracking"
+      ],
+      image: "/images/Screenshot-2025-07-14-at-2.46.51-PM.png",
+      imageAlt: "Sentry OpSec Platform Dashboard"
+    },
+    {
+      id: "smart-contracts",
+      name: "Smart Contract Audits",
+      description: "Industry-leading security audits for EVM and Rust-based smart contracts. Our auditors build security tools and have deep understanding of nuanced vulnerabilities that automated tools miss.",
+      features: [
+        "EVM and Solana smart contract audits",
+        "Manual code review by expert auditors",
+        "Automated vulnerability scanning",
+        "Business logic and economic security analysis",
+        "Gas optimization recommendations",
+        "Formal verification where applicable"
+      ],
+      image: "/images/code-aud.png",
+      imageAlt: "Smart Contract Security Audit"
+    },
+    {
+      id: "infrastructure",
+      name: "Infrastructure Security",
+      description: "Code is only as secure as the infrastructure running it. Our infrastructure audits cover cloud services, deployment pipelines, and hosting environments to prevent compromise at the infrastructure level.",
+      features: [
+        "Cloud security configuration review",
+        "CI/CD pipeline security assessment",
+        "Container and orchestration security",
+        "Network security and segmentation",
+        "Secrets management and rotation",
+        "Infrastructure as Code security review"
+      ],
+      image: "/images/infra-aud.png",
+      imageAlt: "Infrastructure Security Assessment"
+    }
+  ]}
+/>
+
+<FeatureStack
+  title="Advanced Security Monitoring with Sentry"
+  subtitle="Our proprietary OpSec platform provides continuous monitoring and protection for your organization's most critical assets."
+  features={[
+    {
+      id: "continuous-monitoring",
+      title: "Continuous OpSec Monitoring",
+      description: "24/7 monitoring of your organization's security posture with real-time alerts for potential compromises, policy violations, and suspicious activities across all team members and systems.",
+      image: "/images/Screenshot-2025-07-14-at-2.47.39-PM.png",
+      imageAlt: "Sentry Continuous Monitoring Dashboard",
+      badge: "Real-time"
+    },
+    {
+      id: "devops-security",
+      title: "DevOps Security Integration",
+      description: "Deep integration with development workflows including GitHub anomaly detection, code scanning automation, and CI/CD pipeline security monitoring to catch issues before they reach production.",
+      image: "/images/Screenshot-2025-07-14-at-2.45.47-PM.png",
+      imageAlt: "DevOps Security Monitoring",
+      badge: "Automated"
+    },
+    {
+      id: "compromise-detection",
+      title: "Advanced Threat Detection",
+      description: "Machine learning-powered detection of device compromise, credential theft, and account takeover attempts. Our EDR capabilities block exploit attempts in real-time while maintaining detailed forensic logs.",
+      image: "/images/Screenshot-2025-07-14-at-2.19.06-PM.png",
+      imageAlt: "Threat Detection Interface",
+      badge: "AI-Powered"
+    }
+  ]}
+/>
+
+<section class="stats-section section-sm">
+  <div class="container">
+    <div class="stats-content text-center">
+      <h2 class="h3 stats-title">Security by the Numbers</h2>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Security Audits</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">$50M+</div>
+          <div class="stat-label">Assets Protected</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Monitoring</div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="expertise-section section-sm">
+  <div class="container">
+    <div class="expertise-content">
+      <div class="expertise-grid">
+        <div class="expertise-text">
+          <h2 class="h3">Proven Security Expertise</h2>
+          <p class="body-large expertise-description">
+            Our security team brings over a decade of experience from leading technology companies including Apple and Amazon. We understand both traditional and Web3 security challenges.
+          </p>
+          <div class="expertise-highlights">
+            <div class="expertise-item">
+              <h4 class="h6">Primary Risk Vectors</h4>
+              <p class="body-small">Credential compromise, social engineering, malware infection, blind signing, and insider threats</p>
+            </div>
+            <div class="expertise-item">
+              <h4 class="h6">Compromise Detection</h4>
+              <p class="body-small">Average detection time reduced from days to minutes with our monitoring platform</p>
+            </div>
+            <div class="expertise-item">
+              <h4 class="h6">Industry Recognition</h4>
+              <p class="body-small">Trusted by leading DeFi protocols and recognized security researchers</p>
+            </div>
+          </div>
+        </div>
+        <div class="expertise-visual">
+          <div class="expertise-metrics">
+            <div class="metric-card">
+              <div class="metric-title">Threats Prevented</div>
+              <div class="metric-value">2,847</div>
+              <div class="metric-trend">+23% this month</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Response Time</div>
+              <div class="metric-value">Less than 5min</div>
+              <div class="metric-trend">Average alert response</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Uptime</div>
+              <div class="metric-value">99.9%</div>
+              <div class="metric-trend">Platform availability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section section">
+  <div class="container">
+    <div class="cta-content text-center">
+      <h2 class="h2 cta-title">
+        Secure Your Organization Today
+      </h2>
+      <p class="body-large cta-description">
+        Don't wait for a security incident. Get comprehensive OpSec audits and monitoring from industry experts with proven experience protecting leading Web3 organizations.
+      </p>
+      <div class="cta-buttons flex gap-4 justify-center">
+        <a href="/request-an-audit" class="btn btn-primary btn-lg">
+          Request Security Audit
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="/sentry" class="btn btn-secondary btn-lg">
+          Learn About Sentry
+        </a>
+      </div>
+      <p class="body-small cta-disclaimer">
+        Free consultation • W3OS & SEAL compliant • Enterprise-grade security
+      </p>
+    </div>
+  </div>
+</section>
 
 <div class="section">
   <div class="container">
@@ -154,7 +299,7 @@ import Button from '../components/Button.astro';
           <div class="title-small">Company</div>
           <a href="/about-us" class="footer-link">About Us</a>
           <a href="/press" class="footer-link">Press</a>
-          <a href="/radar" class="footer-link">Radar</a>
+          <a href="/tools" class="footer-link">Tools</a>
           <a href="/blog" class="footer-link">Blog</a>
         </div>
         <div class="footer-block">

@@ -1,0 +1,233 @@
+---
+export interface Props {
+  title: string;
+  subtitle?: string;
+  features: Array<{
+    id: string;
+    title: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+    badge?: string;
+  }>;
+}
+
+const { title, subtitle, features } = Astro.props;
+---
+
+<section class="feature-stack-section section">
+  <div class="container">
+    <div class="feature-stack-header text-center">
+      <h2 class="h2">{title}</h2>
+      {subtitle && (
+        <p class="body-large" style="margin-top: var(--spacing-4); max-width: 700px; margin-left: auto; margin-right: auto;">
+          {subtitle}
+        </p>
+      )}
+    </div>
+    
+    <div class="feature-stack">
+      {features.map((feature, index) => (
+        <div class="feature-stack-item">
+          <div class="feature-stack-content">
+            {feature.badge && (
+              <div class="feature-badge">
+                <span class="badge">{feature.badge}</span>
+              </div>
+            )}
+            <h3 class="h3">{feature.title}</h3>
+            <p class="body-large">{feature.description}</p>
+          </div>
+          <div class="feature-stack-image">
+            <div class="feature-image-container">
+              <img 
+                src={feature.image} 
+                alt={feature.imageAlt}
+                class="feature-image"
+                loading="lazy"
+              />
+              <div class="feature-image-glow"></div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-stack-section {
+    background: var(--color-background-primary);
+  }
+  
+  .feature-stack-header {
+    margin-bottom: var(--spacing-20);
+  }
+  
+  .feature-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-24);
+  }
+  
+  .feature-stack-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-16);
+    align-items: center;
+    padding: var(--spacing-12) 0;
+  }
+  
+  .feature-stack-item:nth-child(even) {
+    direction: rtl;
+  }
+  
+  .feature-stack-item:nth-child(even) > * {
+    direction: ltr;
+  }
+  
+  .feature-stack-content {
+    max-width: 500px;
+  }
+  
+  .feature-badge {
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .feature-stack-content .h3 {
+    margin-bottom: var(--spacing-4);
+    color: var(--color-text-primary);
+  }
+  
+  .feature-stack-content .body-large {
+    color: var(--color-text-secondary);
+  }
+  
+  .feature-stack-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .feature-image-container {
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .feature-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-2xl);
+    box-shadow: var(--shadow-2xl);
+    border: 1px solid var(--color-border-primary);
+    transition: transform var(--transition-slow);
+  }
+  
+  .feature-image:hover {
+    transform: scale(1.02);
+  }
+  
+  .feature-image-glow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-2xl);
+    opacity: 0.1;
+    filter: blur(40px);
+    z-index: -1;
+    transition: opacity var(--transition-slow);
+  }
+  
+  .feature-image-container:hover .feature-image-glow {
+    opacity: 0.2;
+  }
+  
+  /* Add subtle animation on scroll */
+  .feature-stack-item {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .feature-stack-item:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  
+  .feature-stack-item:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .feature-stack-item:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .feature-stack-item:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1199px) {
+    .feature-stack-item {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-12);
+      text-align: center;
+    }
+    
+    .feature-stack-item:nth-child(even) {
+      direction: ltr;
+    }
+    
+    .feature-stack-content {
+      max-width: none;
+    }
+    
+    .feature-image-container {
+      max-width: 500px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .feature-stack {
+      gap: var(--spacing-16);
+    }
+    
+    .feature-stack-item {
+      padding: var(--spacing-8) 0;
+      gap: var(--spacing-8);
+    }
+    
+    .feature-image-container {
+      max-width: 400px;
+    }
+  }
+  
+  @media (max-width: 479px) {
+    .feature-stack-header {
+      margin-bottom: var(--spacing-16);
+    }
+    
+    .feature-stack {
+      gap: var(--spacing-12);
+    }
+    
+    .feature-stack-item {
+      padding: var(--spacing-6) 0;
+      gap: var(--spacing-6);
+    }
+    
+    .feature-image-container {
+      max-width: 300px;
+    }
+  }
+</style>

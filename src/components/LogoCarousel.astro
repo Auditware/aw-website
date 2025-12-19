@@ -1,0 +1,164 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  logos: Array<{
+    name: string;
+    src: string;
+    width?: number;
+    height?: number;
+  }>;
+}
+
+const { title, subtitle, logos } = Astro.props;
+---
+
+<section class="logo-carousel section-sm">
+  <div class="container">
+    {(title || subtitle) && (
+      <div class="logo-carousel-header text-center">
+        {subtitle && (
+          <p class="body-small text-muted">{subtitle}</p>
+        )}
+        {title && (
+          <h2 class="h4">{title}</h2>
+        )}
+      </div>
+    )}
+    
+    <div class="logo-carousel-container">
+      <div class="logo-carousel-track">
+        {logos.concat(logos).map((logo, index) => (
+          <div class="logo-carousel-item" key={`${logo.name}-${index}`}>
+            <img 
+              src={logo.src} 
+              alt={logo.name}
+              width={logo.width || 120}
+              height={logo.height || 40}
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-carousel {
+    background: var(--color-background-secondary);
+    border-top: 1px solid var(--color-border-secondary);
+    border-bottom: 1px solid var(--color-border-secondary);
+    overflow: hidden;
+  }
+  
+  .logo-carousel-header {
+    margin-bottom: var(--spacing-12);
+  }
+  
+  .logo-carousel-header .body-small {
+    margin-bottom: var(--spacing-2);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    color: var(--color-text-muted);
+  }
+  
+  .logo-carousel-container {
+    overflow: hidden;
+    mask: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(
+      to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%
+    );
+  }
+  
+  .logo-carousel-track {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-16);
+    width: fit-content;
+    animation: scroll-horizontal 40s linear infinite;
+  }
+  
+  .logo-carousel-item {
+    opacity: 0.6;
+    transition: opacity var(--transition-base);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    min-width: 120px;
+  }
+  
+  .logo-carousel-item:hover {
+    opacity: 1;
+  }
+  
+  .logo-carousel-item img {
+    max-height: 40px;
+    width: auto;
+    filter: grayscale(100%) brightness(1.2);
+    transition: filter var(--transition-base);
+    object-fit: contain;
+  }
+  
+  .logo-carousel-item:hover img {
+    filter: grayscale(0%) brightness(1);
+  }
+  
+  .logo-carousel-track:hover {
+    animation-play-state: paused;
+  }
+  
+  @keyframes scroll-horizontal {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .logo-carousel-track {
+      gap: var(--spacing-12);
+      animation-duration: 30s;
+    }
+    
+    .logo-carousel-item {
+      min-width: 100px;
+      height: 50px;
+    }
+    
+    .logo-carousel-item img {
+      max-height: 32px;
+    }
+  }
+  
+  @media (max-width: 479px) {
+    .logo-carousel-track {
+      gap: var(--spacing-8);
+      animation-duration: 25s;
+    }
+    
+    .logo-carousel-item {
+      min-width: 80px;
+      height: 40px;
+    }
+    
+    .logo-carousel-item img {
+      max-height: 28px;
+    }
+  }
+</style>
