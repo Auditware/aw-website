@@ -1,0 +1,23 @@
+{
+  "name": "aw-website",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Auditware website rebuilt from Webflow export using Astro, MDX, and Storybook",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "astro": "^5.16.6"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/html-webpack5": "^8.6.14",
+    "storybook": "^8.6.15"
+  }
+}
