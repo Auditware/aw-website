@@ -663,6 +663,52 @@ h6 {
   backdrop-filter: var(--backdrop-blur-sm);
 }
 
+/* Framework Section Styles */
+.frameworks-section {
+  background: var(--color-background-secondary);
+  border-top: 1px solid var(--color-border-secondary);
+  border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.frameworks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-8);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.framework-card {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-8);
+  text-align: left;
+}
+
+.framework-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.framework-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  object-fit: contain;
+}
+
+.framework-card .body-base {
+  margin-bottom: var(--spacing-6);
+  line-height: var(--line-height-relaxed);
+}
+
+.frameworks-title {
+  margin-bottom: var(--spacing-8);
+}
+
 .framework-badge-icon {
   width: 32px;
   height: 32px;
