@@ -1,0 +1,1042 @@
+---
+const { 
+  coreCompetencies = [],
+  experience = [],
+  trustedBy = [],
+  serviceOfferings = [],
+  processSteps = [],
+  contact = {}
+} = Astro.props;
+---
+
+<section class="audit-request-page">
+  <!-- Hero Header Section -->
+  <div class="audit-header">
+    <div class="header-content">
+      <div class="header-left">
+        <div class="badge-container">
+          <span class="status-badge">Available for Projects</span>
+        </div>
+        <h1 class="main-title">Security Audit Services</h1>
+        <p class="subtitle">Enterprise-grade security assessments for Web3 organizations</p>
+        
+        <div class="quick-stats">
+          <div class="stat-item">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Audits Completed</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Support Available</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="header-right">
+        <div class="contact-card">
+          <h3>Ready to Get Started?</h3>
+          <p>Book a free 30-minute consultation</p>
+          <a href="https://calendly.com/d/cnqr-49f-xdy/auditware-consultation" class="cta-button-primary">
+            Schedule Consultation
+          </a>
+          <div class="contact-divider"></div>
+          <div class="contact-info">
+            <div class="info-item">
+              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+              </svg>
+              <span>contact@auditware.io</span>
+            </div>
+            <div class="info-item">
+              <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>Response within 24 hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- Left Column: Skills & Experience -->
+    <aside class="sidebar">
+      <!-- Core Competencies -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h2>Core Competencies</h2>
+        </div>
+        <div class="competencies-grid">
+          {coreCompetencies.map(comp => (
+            <div class="competency-item">
+              <div class="competency-bar">
+                <div class="competency-fill" style={`width: ${comp.level}%`}></div>
+              </div>
+              <span class="competency-label">{comp.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Experience Areas -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h2>Audit Experience</h2>
+        </div>
+        <ul class="experience-list">
+          {experience.map(item => (
+            <li class="experience-item">
+              <div class="experience-dot"></div>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Trusted By -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h2>Trusted By</h2>
+        </div>
+        <div class="clients-grid">
+          {trustedBy.map(client => (
+            <div class="client-logo-wrapper">
+              <img src={client.logo} alt={client.name} class="client-logo" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Certifications/Frameworks -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+            </svg>
+          </div>
+          <h2>Compliance</h2>
+        </div>
+        <div class="framework-badges">
+          <div class="framework-badge">
+            <img src="/images/W3OS-Graphic.png" alt="W3OS" class="framework-icon" />
+            <div class="framework-info">
+              <div class="framework-name">W3OS</div>
+              <div class="framework-desc">Compliant</div>
+            </div>
+          </div>
+          <div class="framework-badge">
+            <img src="/images/framework-logomark-circle-blue.svg" alt="SEAL" class="framework-icon" />
+            <div class="framework-info">
+              <div class="framework-name">SEAL</div>
+              <div class="framework-desc">Certified</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Column: Service Offerings -->
+    <main class="main-content">
+      <!-- Service Packages -->
+      <div class="section-card main-card">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <h2>Service Offerings</h2>
+        </div>
+        
+        <div class="services-grid">
+          {serviceOfferings.map((service, index) => (
+            <div class={`service-card ${service.featured ? 'featured' : ''}`}>
+              {service.featured && <div class="featured-badge">Most Popular</div>}
+              <div class="service-header">
+                <h3 class="service-title">{service.title}</h3>
+                {service.tagline && <p class="service-tagline">{service.tagline}</p>}
+              </div>
+              
+              <div class="service-description">
+                <p>{service.description}</p>
+              </div>
+
+              <div class="service-features">
+                <div class="features-header">What's Included:</div>
+                <ul class="features-list">
+                  {service.features.map(feature => (
+                    <li class="feature-item">
+                      <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                      </svg>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {service.deliverables && (
+                <div class="service-deliverables">
+                  <div class="deliverables-header">Deliverables:</div>
+                  <ul class="deliverables-list">
+                    {service.deliverables.map(deliverable => (
+                      <li class="deliverable-item">
+                        <svg class="doc-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <span>{deliverable}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {service.duration && (
+                <div class="service-meta">
+                  <div class="meta-item">
+                    <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span>Duration: {service.duration}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Audit Process -->
+      <div class="section-card main-card">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+            </svg>
+          </div>
+          <h2>Our Audit Process</h2>
+        </div>
+        
+        <div class="process-timeline">
+          {processSteps.map((step, index) => (
+            <div class="process-step">
+              <div class="step-number">{index + 1}</div>
+              <div class="step-content">
+                <h4 class="step-title">{step.title}</h4>
+                <p class="step-description">{step.description}</p>
+                {step.duration && <span class="step-duration">{step.duration}</span>}
+              </div>
+              {index < processSteps.length - 1 && <div class="step-connector"></div>}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="final-cta">
+        <div class="cta-content">
+          <h3>Ready to Secure Your Organization?</h3>
+          <p>Let's discuss how we can protect your project with a comprehensive security audit.</p>
+          <div class="cta-buttons">
+            <a href="https://calendly.com/d/cnqr-49f-xdy/auditware-consultation" class="cta-button-primary large">
+              Schedule Free Consultation
+            </a>
+            <a href="mailto:contact@auditware.io" class="cta-button-secondary large">
+              Email Us Directly
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<style>
+  .audit-request-page {
+    background: #000000;
+    min-height: 100vh;
+    padding-bottom: 80px;
+  }
+
+  /* Header Section */
+  .audit-header {
+    background: linear-gradient(135deg, rgba(79, 99, 255, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 80px 20px 60px;
+    margin-bottom: 60px;
+  }
+
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .badge-container {
+    display: flex;
+    gap: 12px;
+  }
+
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 24px;
+    color: #4ade80;
+    font-size: 0.875rem;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .status-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .main-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    color: #a0a0a0;
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  .quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 16px;
+  }
+
+  .stat-item {
+    text-align: left;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+  }
+
+  .header-right {
+    position: sticky;
+    top: 100px;
+  }
+
+  .contact-card {
+    background: linear-gradient(135deg, rgba(79, 99, 255, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
+    border: 1px solid rgba(79, 99, 255, 0.2);
+    border-radius: 24px;
+    padding: 32px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .contact-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .contact-card > p {
+    color: #a0a0a0;
+    margin-bottom: 24px;
+    font-size: 1rem;
+  }
+
+  .contact-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 24px 0;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #a0a0a0;
+    font-size: 0.875rem;
+  }
+
+  .info-item .icon {
+    width: 20px;
+    height: 20px;
+    color: #4f63ff;
+    flex-shrink: 0;
+  }
+
+  /* Content Layout */
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  /* Section Cards */
+  .section-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 28px;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+  }
+
+  .section-card:hover {
+    border-color: rgba(79, 99, 255, 0.3);
+    box-shadow: 0 4px 24px rgba(79, 99, 255, 0.1);
+  }
+
+  .main-card {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .section-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(79, 99, 255, 0.1);
+    border-radius: 10px;
+    color: #4f63ff;
+    flex-shrink: 0;
+  }
+
+  .section-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .section-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  /* Core Competencies */
+  .competencies-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .competency-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .competency-label {
+    font-size: 0.875rem;
+    color: #ffffff;
+    font-weight: 500;
+  }
+
+  .competency-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .competency-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4f63ff 0%, #8c83b2 100%);
+    border-radius: 4px;
+    transition: width 1s ease;
+    box-shadow: 0 0 10px rgba(79, 99, 255, 0.5);
+  }
+
+  /* Experience List */
+  .experience-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .experience-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #a0a0a0;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .experience-dot {
+    width: 8px;
+    height: 8px;
+    background: #4f63ff;
+    border-radius: 50%;
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  /* Clients Grid */
+  .clients-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .client-logo-wrapper {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .client-logo-wrapper:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(79, 99, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .client-logo {
+    max-width: 100%;
+    height: 32px;
+    width: auto;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+
+  .client-logo-wrapper:hover .client-logo {
+    opacity: 1;
+  }
+
+  /* Framework Badges */
+  .framework-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .framework-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .framework-badge:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(79, 99, 255, 0.2);
+  }
+
+  .framework-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+
+  .framework-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .framework-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  .framework-desc {
+    font-size: 0.75rem;
+    color: #666;
+  }
+
+  /* Service Cards */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .service-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 32px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4f63ff 0%, #8c83b2 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card.featured {
+    border-color: rgba(79, 99, 255, 0.3);
+    background: rgba(79, 99, 255, 0.05);
+  }
+
+  .service-card.featured::before {
+    opacity: 1;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .service-card:hover {
+    border-color: rgba(79, 99, 255, 0.4);
+    box-shadow: 0 8px 32px rgba(79, 99, 255, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .service-header {
+    margin-bottom: 16px;
+  }
+
+  .service-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .service-tagline {
+    font-size: 1rem;
+    color: #4f63ff;
+    font-weight: 500;
+  }
+
+  .service-description {
+    margin-bottom: 24px;
+  }
+
+  .service-description p {
+    color: #a0a0a0;
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  .features-header,
+  .deliverables-header {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+
+  .features-list,
+  .deliverables-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .feature-item,
+  .deliverable-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #cccccc;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .check-icon,
+  .doc-icon {
+    width: 20px;
+    height: 20px;
+    color: #4ade80;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .doc-icon {
+    color: #4f63ff;
+  }
+
+  .service-features {
+    margin-bottom: 24px;
+  }
+
+  .service-deliverables {
+    margin-bottom: 24px;
+  }
+
+  .service-meta {
+    display: flex;
+    gap: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #a0a0a0;
+    font-size: 0.875rem;
+  }
+
+  .meta-icon {
+    width: 18px;
+    height: 18px;
+    color: #4f63ff;
+  }
+
+  /* Process Timeline */
+  .process-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .process-step {
+    position: relative;
+    display: flex;
+    gap: 24px;
+    padding-bottom: 40px;
+  }
+
+  .process-step:last-child {
+    padding-bottom: 0;
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 16px rgba(79, 99, 255, 0.3);
+  }
+
+  .step-content {
+    flex: 1;
+    padding-top: 4px;
+  }
+
+  .step-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .step-description {
+    color: #a0a0a0;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .step-duration {
+    display: inline-block;
+    padding: 4px 12px;
+    background: rgba(79, 99, 255, 0.1);
+    border: 1px solid rgba(79, 99, 255, 0.2);
+    border-radius: 12px;
+    color: #4f63ff;
+    font-size: 0.8125rem;
+    font-weight: 500;
+  }
+
+  .step-connector {
+    position: absolute;
+    left: 23px;
+    top: 48px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(79, 99, 255, 0.3) 0%, rgba(79, 99, 255, 0.1) 100%);
+    z-index: 1;
+  }
+
+  /* CTA Buttons */
+  .cta-button-primary,
+  .cta-button-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-button-primary {
+    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(79, 99, 255, 0.3);
+  }
+
+  .cta-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(79, 99, 255, 0.4);
+  }
+
+  .cta-button-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .cta-button-secondary:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(79, 99, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .cta-button-primary.large,
+  .cta-button-secondary.large {
+    padding: 18px 36px;
+    font-size: 1.125rem;
+  }
+
+  /* Final CTA */
+  .final-cta {
+    margin-top: 20px;
+    background: linear-gradient(135deg, rgba(79, 99, 255, 0.1) 0%, rgba(140, 131, 178, 0.05) 100%);
+    border: 1px solid rgba(79, 99, 255, 0.2);
+    border-radius: 24px;
+    padding: 48px;
+    text-align: center;
+  }
+
+  .cta-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    color: #a0a0a0;
+    margin-bottom: 32px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1199px) {
+    .header-content {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .header-right {
+      position: static;
+    }
+
+    .content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .audit-header {
+      padding: 60px 20px 40px;
+    }
+
+    .main-title {
+      font-size: 2.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+    }
+
+    .quick-stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-number {
+      font-size: 1.75rem;
+    }
+
+    .sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .section-card,
+    .main-card {
+      padding: 24px;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .final-cta {
+      padding: 32px 24px;
+    }
+
+    .cta-content h3 {
+      font-size: 1.5rem;
+    }
+
+    .cta-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
