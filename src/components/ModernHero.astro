@@ -86,7 +86,7 @@ const {
               <img 
                 src={imageUrl} 
                 alt={imageAlt}
-                class="hero-image animate-float"
+                class="hero-image"
                 loading="eager"
               />
               <div class="hero-image-glow"></div>
@@ -268,8 +268,6 @@ const {
     width: 80%;
     height: 120%;
     background: radial-gradient(ellipse, rgba(139, 92, 246, 0.2) 0%, transparent 50%);
-    transform: rotate(15deg);
-    animation: float 8s ease-in-out infinite;
   }
   
   .hero-gradient-2 {
@@ -279,8 +277,6 @@ const {
     width: 60%;
     height: 80%;
     background: radial-gradient(ellipse, rgba(124, 58, 237, 0.15) 0%, transparent 50%);
-    transform: rotate(-15deg);
-    animation: float 10s ease-in-out infinite reverse;
   }
 
   /* Green Theme - Background Gradients */
@@ -346,14 +342,6 @@ const {
       radial-gradient(circle at 1px 1px, rgba(59, 130, 100, 0.08) 1px, transparent 0);
   }
   
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) rotate(15deg);
-    }
-    50% {
-      transform: translateY(-30px) rotate(15deg);
-    }
-  }
   
   /* Responsive Design */
   @media (max-width: 1199px) {
