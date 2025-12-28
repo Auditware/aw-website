@@ -844,6 +844,11 @@ h6 {
   object-fit: contain;
 }
 
+/* Make SEAL icon (second badge) slightly smaller */
+.framework-badge-icon-link:nth-child(2) .framework-badge-icon {
+  height: 51px;
+}
+
 /* Framework Section Styles - Enhanced */
 .frameworks-section {
   background: transparent;
