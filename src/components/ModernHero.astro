@@ -56,19 +56,11 @@ const {
           {badges.length > 0 && (
             <div class="hero-badges">
               {badges.map((badge) => (
-                <div class="framework-badge">
+                <a href={badge.href} class="framework-badge-icon-link" target="_blank" rel="noopener noreferrer" title={badge.text}>
                   {badge.icon && (
-                    <img src={badge.icon} alt="" class="framework-badge-icon" />
+                    <img src={badge.icon} alt={badge.text} class="framework-badge-icon" />
                   )}
-                  <div class="framework-badge-content">
-                    <div class="framework-badge-title">{badge.text}</div>
-                    {badge.href && (
-                      <a href={badge.href} class="framework-badge-description body-small">
-                        Learn more →
-                      </a>
-                    )}
-                  </div>
-                </div>
+                </a>
               ))}
             </div>
           )}
@@ -185,8 +177,9 @@ const {
   
   .hero-badges {
     display: flex;
-    flex-direction: column;
-    gap: var(--spacing-4);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-5);
     margin-bottom: var(--spacing-12);
     animation: fade-in-up 0.6s 0.3s var(--ease-out) backwards;
   }
@@ -381,6 +374,7 @@ const {
     }
     
     .hero-badges {
+      justify-content: center;
       align-items: center;
     }
     
@@ -429,8 +423,9 @@ const {
       font-size: var(--font-size-base);
     }
     
-    .framework-badge {
-      padding: var(--spacing-3) var(--spacing-4);
+    .framework-badge-icon-link .framework-badge-icon {
+      height: 48px;
+      width: auto;
     }
   }
 </style>

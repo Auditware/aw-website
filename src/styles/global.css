@@ -802,19 +802,46 @@ h6 {
   display: inline-flex;
   align-items: center;
   gap: var(--spacing-3);
-  padding: var(--spacing-4) var(--spacing-6);
+  padding: var(--spacing-3) var(--spacing-5);
   background: var(--gradient-card);
   border: 1px solid var(--color-border-primary);
   border-radius: var(--radius-xl);
   backdrop-filter: var(--backdrop-blur-base);
   transition: all var(--transition-base);
   box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .framework-badge:hover {
   border-color: var(--color-border-purple);
   box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
+}
+
+.framework-badge:hover .framework-badge-info {
+  color: var(--color-primary-400);
+}
+
+/* Framework Badge Icon Links - Compact Version */
+.framework-badge-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.framework-badge-icon-link:hover {
+  transform: translateY(-2px) scale(1.05);
+  opacity: 0.8;
+}
+
+.framework-badge-icon-link .framework-badge-icon {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Framework Section Styles - Enhanced */
@@ -893,24 +920,25 @@ h6 {
 }
 
 .framework-badge-icon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-md);
-}
-
-.framework-badge-content {
-  text-align: left;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .framework-badge-title {
   font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-1);
+  white-space: nowrap;
 }
 
-.framework-badge-description {
-  font-size: var(--font-size-sm);
+.framework-badge-info {
   color: var(--color-text-tertiary);
+  flex-shrink: 0;
+  transition: color var(--transition-base);
+  margin-left: var(--spacing-1);
 }
 
 /* Responsive Design */
