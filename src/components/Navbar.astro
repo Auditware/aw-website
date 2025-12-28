@@ -43,20 +43,28 @@ import Button from './Button.astro';
 
 <style>
   .fixed-navbar {
-    z-index: 19;
+    z-index: 100;
     width: 100%;
     position: sticky;
     top: 0;
+    transition: all var(--transition-base);
   }
 
   .navbar {
-    backdrop-filter: blur(21px);
-    background-color: #121213;
-    background-image: linear-gradient(#2b2b2b, #030303);
-    border: 1px solid #1b1b1b;
-    height: 60px;
+    backdrop-filter: var(--backdrop-blur-lg);
+    background: var(--color-background-glass-medium);
+    border-bottom: 1px solid var(--color-border-primary);
+    height: 72px;
     position: sticky;
     top: 0;
+    transition: all var(--transition-base);
+  }
+  
+  .fixed-navbar:has(.navbar:hover),
+  .fixed-navbar.scrolled .navbar {
+    background: var(--color-background-glass-strong);
+    border-bottom-color: var(--color-border-strong);
+    box-shadow: var(--shadow-elevation-low);
   }
 
   .navbar-holder {
@@ -80,22 +88,32 @@ import Button from './Button.astro';
   }
 
   .container.navbar-container {
-    background-color: #121212;
-    background-image: linear-gradient(#2b2b2b, #030303);
-    border: 1px solid transparent;
+    background: transparent;
+    border: none;
     align-items: center;
     height: 100%;
-    padding: 0 2em;
+    padding: 0 var(--spacing-8);
     display: flex;
   }
 
   .brand {
     padding-left: 0;
     text-decoration: none;
+    transition: transform var(--transition-base);
+  }
+  
+  .brand:hover {
+    transform: scale(1.02);
   }
 
   .brand-image {
-    max-width: 40%;
+    max-width: 160px;
+    height: auto;
+    transition: opacity var(--transition-base);
+  }
+  
+  .brand:hover .brand-image {
+    opacity: 0.9;
   }
 
   .nav-menu {
@@ -129,11 +147,11 @@ import Button from './Button.astro';
     align-self: auto;
     display: flex;
     align-items: center;
-    gap: var(--space-4);
+    gap: var(--spacing-3);
   }
 
   .nav-links {
-    grid-column-gap: 40px;
+    grid-column-gap: var(--spacing-8);
     justify-content: flex-start;
     align-items: center;
     height: 100%;
@@ -143,29 +161,52 @@ import Button from './Button.astro';
   .github-icon {
     vertical-align: sub;
     position: static;
+    opacity: 0.8;
+    transition: opacity var(--transition-base);
+  }
+  
+  .github-icon:hover {
+    opacity: 1;
   }
 
   .menu-button {
-    border-radius: 12px;
-    padding: 13px;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-3);
     display: none;
+    background: var(--color-background-glass-medium);
+    border: 1px solid var(--color-border-primary);
+    cursor: pointer;
+    transition: all var(--transition-base);
+  }
+  
+  .menu-button:hover {
+    background: var(--color-background-glass-strong);
+    border-color: var(--color-border-strong);
   }
 
   .menu-icon {
-    width: 18px;
-    height: 18px;
-    background-color: #fff;
+    width: 20px;
+    height: 20px;
+    background-color: var(--color-text-primary);
   }
 
   /* Mobile styles */
   @media screen and (max-width: 991px) {
+    .navbar {
+      height: 64px;
+    }
+    
     .nav-menu-link-holder {
-      grid-row-gap: 20px;
-      background-color: #0d0d0d;
+      grid-row-gap: var(--spacing-5);
+      background: var(--color-background-glass-strong);
+      backdrop-filter: var(--backdrop-blur-xl);
+      border: 1px solid var(--color-border-primary);
+      border-radius: var(--radius-2xl);
       flex-direction: column;
       height: auto;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      padding: var(--spacing-6);
+      margin-top: var(--spacing-4);
+      box-shadow: var(--shadow-elevation-high);
     }
 
     .nav-menu-link-container,
@@ -174,7 +215,7 @@ import Button from './Button.astro';
     }
 
     .nav-links {
-      grid-row-gap: 20px;
+      grid-row-gap: var(--spacing-5);
       flex-direction: column;
       height: auto;
     }
@@ -185,13 +226,17 @@ import Button from './Button.astro';
   }
 
   @media screen and (max-width: 479px) {
+    .navbar {
+      height: 60px;
+    }
+    
     .container.navbar-container {
-      padding-left: 1em;
-      padding-right: 1em;
+      padding-left: var(--spacing-4);
+      padding-right: var(--spacing-4);
     }
 
     .brand-image {
-      max-width: 50%;
+      max-width: 140px;
     }
   }
 </style>

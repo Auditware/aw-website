@@ -1,18 +1,18 @@
-/* Premium Design Tokens - Inspired by modern design systems */
+/* Premium Design Tokens - Refined for Premium & Elegant Design */
 
 :root {
-  /* Brand Colors */
-  --color-primary-50: #f0f4ff;
-  --color-primary-100: #e0e8ff;
-  --color-primary-200: #c6d4ff;
-  --color-primary-300: #9db3ff;
-  --color-primary-400: #6b86ff;
-  --color-primary-500: #4f63ff;
-  --color-primary-600: #3d4cff;
-  --color-primary-700: #3040f5;
-  --color-primary-800: #2a33d4;
-  --color-primary-900: #1e2485;
-  --color-primary-950: #15173e;
+  /* Brand Colors - Refined Purple Scale */
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #4c1d95;
+  --color-primary-950: #2e1065;
 
   /* Neutral Colors */
   --color-neutral-50: #f8fafc;
@@ -38,25 +38,30 @@
   --color-error-500: #ef4444;
   --color-error-600: #dc2626;
 
-  /* Background Colors */
+  /* Background Colors - Enhanced for Premium Feel */
   --color-background-primary: #000000;
   --color-background-secondary: #0a0a0a;
-  --color-background-tertiary: #111111;
+  --color-background-tertiary: #0f0f0f;
   --color-background-elevated: #1a1a1a;
-  --color-background-glass: rgba(255, 255, 255, 0.05);
-  --color-background-glass-strong: rgba(255, 255, 255, 0.08);
+  --color-background-glass: rgba(255, 255, 255, 0.03);
+  --color-background-glass-medium: rgba(255, 255, 255, 0.06);
+  --color-background-glass-strong: rgba(255, 255, 255, 0.10);
+  --color-background-glass-purple: rgba(139, 92, 246, 0.08);
 
-  /* Text Colors */
+  /* Text Colors - Improved Contrast */
   --color-text-primary: #ffffff;
   --color-text-secondary: #e2e8f0;
   --color-text-tertiary: #cbd5e1;
   --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
   --color-text-inverse: #0f172a;
 
-  /* Border Colors */
-  --color-border-primary: rgba(255, 255, 255, 0.1);
-  --color-border-secondary: rgba(255, 255, 255, 0.05);
+  /* Border Colors - Refined Glass Effect */
+  --color-border-primary: rgba(255, 255, 255, 0.08);
+  --color-border-secondary: rgba(255, 255, 255, 0.04);
+  --color-border-strong: rgba(255, 255, 255, 0.12);
   --color-border-accent: var(--color-primary-500);
+  --color-border-purple: rgba(139, 92, 246, 0.2);
 
   /* Typography */
   --font-family-display: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -102,7 +107,7 @@
   --letter-spacing-wider: 0.05em;
   --letter-spacing-widest: 0.1em;
 
-  /* Spacing Scale */
+  /* Spacing Scale - More Generous for Premium Feel */
   --spacing-0: 0;
   --spacing-px: 1px;
   --spacing-0-5: 0.125rem;     /* 2px */
@@ -123,6 +128,7 @@
   --spacing-12: 3rem;          /* 48px */
   --spacing-14: 3.5rem;        /* 56px */
   --spacing-16: 4rem;          /* 64px */
+  --spacing-18: 4.5rem;        /* 72px */
   --spacing-20: 5rem;          /* 80px */
   --spacing-24: 6rem;          /* 96px */
   --spacing-28: 7rem;          /* 112px */
@@ -150,23 +156,31 @@
   --radius-3xl: 1.5rem;        /* 24px */
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-2xl: 0 50px 100px -20px rgba(0, 0, 0, 0.25);
-  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 0 1px rgba(79, 99, 255, 0.1), 0 4px 16px rgba(79, 99, 255, 0.1);
-  --shadow-glow-strong: 0 0 0 1px rgba(79, 99, 255, 0.2), 0 8px 32px rgba(79, 99, 255, 0.15);
+  /* Shadows - Premium Layered System */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px -1px rgba(0, 0, 0, 0.12);
+  --shadow-base: 0 4px 6px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -2px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -4px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.30);
+  --shadow-2xl: 0 50px 100px -20px rgba(0, 0, 0, 0.35);
+  --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 0 1px rgba(139, 92, 246, 0.1), 0 4px 20px rgba(139, 92, 246, 0.15);
+  --shadow-glow-medium: 0 0 0 1px rgba(139, 92, 246, 0.15), 0 8px 32px rgba(139, 92, 246, 0.20);
+  --shadow-glow-strong: 0 0 0 1px rgba(139, 92, 246, 0.25), 0 12px 48px rgba(139, 92, 246, 0.25);
+  --shadow-elevation-low: 0 2px 8px -2px rgba(0, 0, 0, 0.2), 0 4px 16px -4px rgba(0, 0, 0, 0.1);
+  --shadow-elevation-medium: 0 4px 16px -4px rgba(0, 0, 0, 0.25), 0 8px 24px -6px rgba(0, 0, 0, 0.15);
+  --shadow-elevation-high: 0 8px 32px -8px rgba(0, 0, 0, 0.30), 0 16px 48px -12px rgba(0, 0, 0, 0.20);
 
-  /* Transitions */
+  /* Transitions - Smooth Premium Feel */
   --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slower: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Layout */
   --container-sm: 640px;
@@ -191,11 +205,15 @@
   --z-index-toast: 1700;
   --z-index-tooltip: 1800;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-400) 100%);
+  /* Gradients - Premium Purple Theme */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-500) 100%);
   --gradient-secondary: linear-gradient(135deg, var(--color-neutral-800) 0%, var(--color-neutral-700) 100%);
-  --gradient-hero: linear-gradient(135deg, #000000 0%, #1a1a2e 100%);
-  --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  --gradient-hero: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.15) 0%, transparent 50%), linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-purple: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.1) 100%);
+  --gradient-mesh: radial-gradient(at 40% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%), 
+                   radial-gradient(at 80% 0%, rgba(124, 58, 237, 0.2) 0%, transparent 50%),
+                   radial-gradient(at 0% 50%, rgba(109, 40, 217, 0.2) 0%, transparent 50%);
 
   /* Blur Effects */
   --blur-sm: blur(4px);
@@ -206,12 +224,18 @@
   --blur-2xl: blur(40px);
   --blur-3xl: blur(64px);
 
-  /* Backdrop Effects */
-  --backdrop-blur-sm: blur(4px);
-  --backdrop-blur-base: blur(8px);
-  --backdrop-blur-md: blur(12px);
-  --backdrop-blur-lg: blur(16px);
-  --backdrop-blur-xl: blur(24px);
+  /* Backdrop Effects - Enhanced Glass Morphism */
+  --backdrop-blur-sm: blur(8px);
+  --backdrop-blur-base: blur(12px);
+  --backdrop-blur-md: blur(16px);
+  --backdrop-blur-lg: blur(24px);
+  --backdrop-blur-xl: blur(32px);
+  --backdrop-blur-2xl: blur(48px);
+  
+  /* Glass Effect Presets */
+  --glass-light: rgba(255, 255, 255, 0.05);
+  --glass-medium: rgba(255, 255, 255, 0.08);
+  --glass-strong: rgba(255, 255, 255, 0.12);
 }
 
 /* Responsive Breakpoints */
