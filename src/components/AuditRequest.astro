@@ -1,15 +1,26 @@
 ---
 const { 
-  coreCompetencies = [],
+  experienceYears = [],
   experience = [],
   trustedBy = [],
   serviceOfferings = [],
   processSteps = [],
   contact = {}
 } = Astro.props;
+
+// Sort experience by years descending and calculate fill percentages
+const sortedExperience = [...experienceYears].sort((a, b) => b.years - a.years);
+const maxYears = sortedExperience[0]?.years || 1;
+const experienceWithFill = sortedExperience.map(exp => ({
+  ...exp,
+  fillPercent: (exp.years / maxYears) * 100
+}));
 ---
 
 <section class="audit-request-page">
+  <!-- Cursor-reactive background -->
+  <div class="cursor-glow"></div>
+  
   <!-- Hero Header Section -->
   <div class="audit-header">
     <div class="header-content">
@@ -66,37 +77,35 @@ const {
   <div class="content-wrapper">
     <!-- Left Column: Skills & Experience -->
     <aside class="sidebar">
-      <!-- Core Competencies -->
-      <div class="section-card">
+      <!-- Experience -->
+      <div class="section-card experience-card">
         <div class="section-header">
           <div class="section-icon">
             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
             </svg>
           </div>
-          <h2>Core Competencies</h2>
+          <h2>Experience</h2>
         </div>
-        <div class="competencies-grid">
-          {coreCompetencies.map(comp => (
-            <div class="competency-item">
-              <div class="competency-bar">
-                <div class="competency-fill" style={`width: ${comp.level}%`}></div>
+        <div class="experience-years-grid">
+          {experienceWithFill.map((exp, index) => (
+            <div class="experience-year-item" data-service-index={index}>
+              <div class="experience-top">
+                <span class="experience-year-label">{exp.name}</span>
+                <span class="experience-year-value">{exp.years}yr</span>
               </div>
-              <span class="competency-label">{comp.name}</span>
+              <div class="experience-bar">
+                <div class="experience-fill" style={`width: ${exp.fillPercent}%`}></div>
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      <!-- Experience Areas -->
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-            </svg>
-          </div>
-          <h2>Audit Experience</h2>
+      <!-- Audit Experience - Compact -->
+      <div class="section-card compact-card">
+        <div class="section-header-simple">
+          <h3>Audit Background</h3>
         </div>
         <ul class="experience-list">
           {experience.map(item => (
@@ -108,49 +117,30 @@ const {
         </ul>
       </div>
 
-      <!-- Trusted By -->
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-            </svg>
-          </div>
-          <h2>Trusted By</h2>
+      <!-- Trusted By & Compliance - Slim combined -->
+      <div class="slim-section">
+        <div class="slim-header">
+          <h4>Trusted By</h4>
         </div>
-        <div class="clients-grid">
+        <div class="clients-grid-compact">
           {trustedBy.map(client => (
-            <div class="client-logo-wrapper">
-              <img src={client.logo} alt={client.name} class="client-logo" loading="lazy" />
-            </div>
+            <img src={client.logo} alt={client.name} class="client-logo-compact" loading="lazy" />
           ))}
         </div>
       </div>
 
-      <!-- Certifications/Frameworks -->
-      <div class="section-card">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
-            </svg>
-          </div>
-          <h2>Compliance</h2>
+      <div class="slim-section">
+        <div class="slim-header">
+          <h4>Compliance</h4>
         </div>
-        <div class="framework-badges">
-          <div class="framework-badge">
-            <img src="/images/W3OS-Graphic.png" alt="W3OS" class="framework-icon" />
-            <div class="framework-info">
-              <div class="framework-name">W3OS</div>
-              <div class="framework-desc">Compliant</div>
-            </div>
+        <div class="framework-badges-compact">
+          <div class="framework-badge-compact">
+            <img src="/images/W3OS-Graphic.png" alt="W3OS" class="framework-icon-compact" />
+            <span>W3OS</span>
           </div>
-          <div class="framework-badge">
-            <img src="/images/framework-logomark-circle-blue.svg" alt="SEAL" class="framework-icon" />
-            <div class="framework-info">
-              <div class="framework-name">SEAL</div>
-              <div class="framework-desc">Certified</div>
-            </div>
+          <div class="framework-badge-compact">
+            <img src="/images/framework-logomark-circle-blue.svg" alt="SEAL" class="framework-icon-compact" />
+            <span>SEAL</span>
           </div>
         </div>
       </div>
@@ -169,9 +159,9 @@ const {
           <h2>Service Offerings</h2>
         </div>
         
-        <div class="services-grid">
+        <div class="services-grid" id="services-grid">
           {serviceOfferings.map((service, index) => (
-            <div class={`service-card ${service.featured ? 'featured' : ''}`}>
+            <div class={`service-card ${service.featured ? 'featured' : ''}`} data-service-index={index}>
               {service.featured && <div class="featured-badge">Most Popular</div>}
               <div class="service-header">
                 <h3 class="service-title">{service.title}</h3>
@@ -182,35 +172,40 @@ const {
                 <p>{service.description}</p>
               </div>
 
-              <div class="service-features">
-                <div class="features-header">What's Included:</div>
-                <ul class="features-list">
-                  {service.features.map(feature => (
-                    <li class="feature-item">
-                      <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                      </svg>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <details class="service-details" open={service.featured}>
+                <summary class="details-toggle">View Details</summary>
+                <div class="details-content">
+                  <div class="service-features">
+                    <div class="features-header">What's Included:</div>
+                    <ul class="features-list">
+                      {service.features.slice(0, 4).map(feature => (
+                        <li class="feature-item">
+                          <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-              {service.deliverables && (
-                <div class="service-deliverables">
-                  <div class="deliverables-header">Deliverables:</div>
-                  <ul class="deliverables-list">
-                    {service.deliverables.map(deliverable => (
-                      <li class="deliverable-item">
-                        <svg class="doc-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                        <span>{deliverable}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  {service.deliverables && (
+                    <div class="service-deliverables">
+                      <div class="deliverables-header">Key Deliverables:</div>
+                      <ul class="deliverables-list">
+                        {service.deliverables.slice(0, 3).map(deliverable => (
+                          <li class="deliverable-item">
+                            <svg class="doc-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            <span>{deliverable}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
-              )}
+              </details>
 
               {service.duration && (
                 <div class="service-meta">
@@ -218,7 +213,7 @@ const {
                     <svg class="meta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
-                    <span>Duration: {service.duration}</span>
+                    <span>{service.duration}</span>
                   </div>
                 </div>
               )}
@@ -227,7 +222,7 @@ const {
         </div>
       </div>
 
-      <!-- Audit Process -->
+      <!-- Audit Process - Compact Interactive -->
       <div class="section-card main-card">
         <div class="section-header">
           <div class="section-icon">
@@ -238,16 +233,21 @@ const {
           <h2>Our Audit Process</h2>
         </div>
         
-        <div class="process-timeline">
+        <div class="process-timeline-compact">
           {processSteps.map((step, index) => (
-            <div class="process-step">
-              <div class="step-number">{index + 1}</div>
-              <div class="step-content">
-                <h4 class="step-title">{step.title}</h4>
-                <p class="step-description">{step.description}</p>
-                {step.duration && <span class="step-duration">{step.duration}</span>}
+            <div class="process-step-compact" data-step={index}>
+              <div class="step-card">
+                <div class="step-top">
+                  <div class="step-number-compact">{index + 1}</div>
+                  <h4 class="step-title-compact">{step.title}</h4>
+                  {step.duration && <span class="step-duration-compact">{step.duration}</span>}
+                </div>
+                <details class="step-details">
+                  <summary class="step-summary">Details</summary>
+                  <p class="step-description-compact">{step.description}</p>
+                </details>
               </div>
-              {index < processSteps.length - 1 && <div class="step-connector"></div>}
+              {index < processSteps.length - 1 && <div class="step-arrow">→</div>}
             </div>
           ))}
         </div>
@@ -277,14 +277,37 @@ const {
     background: #000000;
     min-height: 100vh;
     padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
   }
 
-  /* Header Section */
+  /* Cursor-reactive glow */
+  .cursor-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79, 99, 255, 0.15) 0%, rgba(140, 131, 178, 0.08) 30%, transparent 70%);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    z-index: 0;
+    filter: blur(40px);
+  }
+
+  .audit-request-page:hover .cursor-glow {
+    opacity: 1;
+  }
+
+  /* Header Section - More Compact */
   .audit-header {
-    background: linear-gradient(135deg, rgba(79, 99, 255, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(135deg, rgba(79, 99, 255, 0.12) 0%, rgba(140, 131, 178, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 80px 20px 60px;
-    margin-bottom: 60px;
+    padding: 60px 20px 40px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
   }
 
   .header-content {
@@ -336,7 +359,7 @@ const {
   }
 
   .main-title {
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 800;
     color: #ffffff;
     line-height: 1.1;
@@ -345,7 +368,7 @@ const {
   }
 
   .subtitle {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #a0a0a0;
     line-height: 1.5;
     max-width: 600px;
@@ -354,8 +377,8 @@ const {
   .quick-stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    margin-top: 16px;
+    gap: 24px;
+    margin-top: 12px;
   }
 
   .stat-item {
@@ -463,8 +486,8 @@ const {
   .section-card {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
-    padding: 28px;
+    border-radius: 16px;
+    padding: 20px;
     backdrop-filter: blur(8px);
     transition: all 0.3s ease;
   }
@@ -476,7 +499,42 @@ const {
 
   .main-card {
     background: rgba(255, 255, 255, 0.03);
-    padding: 40px;
+    padding: 32px;
+  }
+
+  .compact-card {
+    padding: 16px;
+  }
+
+  /* Slim Sections (for Trusted By and Compliance) */
+  .slim-section {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 12px 16px;
+    backdrop-filter: blur(6px);
+  }
+
+  .slim-header h4 {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .section-header-simple {
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .section-header-simple h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
   }
 
   .section-header {
@@ -512,39 +570,68 @@ const {
     margin: 0;
   }
 
-  /* Core Competencies */
-  .competencies-grid {
+  /* Experience Years */
+  .experience-years-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 14px;
   }
 
-  .competency-item {
+  .experience-year-item {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
+    transition: all 0.3s ease;
+    padding: 4px;
+    border-radius: 8px;
   }
 
-  .competency-label {
-    font-size: 0.875rem;
-    color: #ffffff;
+  .experience-year-item.highlighted {
+    background: rgba(79, 99, 255, 0.1);
+    transform: translateX(4px);
+  }
+
+  .experience-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .experience-year-label {
+    font-size: 0.8125rem;
+    color: #cccccc;
     font-weight: 500;
+    transition: color 0.3s ease;
   }
 
-  .competency-bar {
-    height: 8px;
+  .experience-year-item.highlighted .experience-year-label {
+    color: #ffffff;
+  }
+
+  .experience-year-value {
+    font-size: 0.75rem;
+    color: #4f63ff;
+    font-weight: 600;
+  }
+
+  .experience-bar {
+    height: 6px;
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 4px;
+    border-radius: 3px;
     overflow: hidden;
     position: relative;
   }
 
-  .competency-fill {
+  .experience-fill {
     height: 100%;
     background: linear-gradient(90deg, #4f63ff 0%, #8c83b2 100%);
-    border-radius: 4px;
-    transition: width 1s ease;
-    box-shadow: 0 0 10px rgba(79, 99, 255, 0.5);
+    border-radius: 3px;
+    transition: all 0.8s ease;
+    box-shadow: 0 0 8px rgba(79, 99, 255, 0.3);
+  }
+
+  .experience-year-item.highlighted .experience-fill {
+    box-shadow: 0 0 12px rgba(79, 99, 255, 0.6);
   }
 
   /* Experience List */
@@ -575,99 +662,58 @@ const {
     flex-shrink: 0;
   }
 
-  /* Clients Grid */
-  .clients-grid {
+  /* Clients Grid - Compact */
+  .clients-grid-compact {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+    gap: 10px;
   }
 
-  .client-logo-wrapper {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-
-  .client-logo-wrapper:hover {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(79, 99, 255, 0.2);
-    transform: translateY(-2px);
-  }
-
-  .client-logo {
+  .client-logo-compact {
     max-width: 100%;
-    height: 32px;
+    height: 24px;
     width: auto;
-    opacity: 0.7;
+    opacity: 0.6;
     transition: opacity 0.3s ease;
   }
 
-  .client-logo-wrapper:hover .client-logo {
+  .client-logo-compact:hover {
     opacity: 1;
   }
 
-  /* Framework Badges */
-  .framework-badges {
+  /* Framework Badges - Compact */
+  .framework-badges-compact {
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
-  .framework-badge {
+  .framework-badge-compact {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-  }
-
-  .framework-badge:hover {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(79, 99, 255, 0.2);
-  }
-
-  .framework-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-  }
-
-  .framework-info {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .framework-name {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #ffffff;
-  }
-
-  .framework-desc {
+    gap: 6px;
     font-size: 0.75rem;
-    color: #666;
+    color: #999;
+    font-weight: 500;
+  }
+
+  .framework-icon-compact {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
   }
 
   /* Service Cards */
   .services-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
   .service-card {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
-    padding: 32px;
+    padding: 24px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -685,7 +731,8 @@ const {
     transition: opacity 0.3s ease;
   }
 
-  .service-card:hover::before {
+  .service-card:hover::before,
+  .service-card.active::before {
     opacity: 1;
   }
 
@@ -704,55 +751,106 @@ const {
     right: 16px;
     background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
     color: #ffffff;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 0.6875rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
-  .service-card:hover {
+  .service-card:hover,
+  .service-card.active {
     border-color: rgba(79, 99, 255, 0.4);
     box-shadow: 0 8px 32px rgba(79, 99, 255, 0.15);
-    transform: translateY(-4px);
+    transform: translateY(-2px);
+  }
+
+  /* Service Details Toggle */
+  .service-details {
+    margin-top: 16px;
+  }
+
+  .details-toggle {
+    cursor: pointer;
+    color: #4f63ff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    list-style: none;
+    user-select: none;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+  }
+
+  .details-toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .details-toggle::before {
+    content: '▼ ';
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  details[open] .details-toggle::before {
+    transform: rotate(180deg);
+  }
+
+  .details-toggle:hover {
+    color: #8c83b2;
+  }
+
+  .details-content {
+    margin-top: 12px;
+    animation: slideDown 0.3s ease;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .service-header {
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .service-title {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #ffffff;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   .service-tagline {
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: #4f63ff;
     font-weight: 500;
   }
 
   .service-description {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .service-description p {
     color: #a0a0a0;
-    line-height: 1.7;
-    font-size: 1rem;
+    line-height: 1.6;
+    font-size: 0.9375rem;
   }
 
   .features-header,
   .deliverables-header {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #999;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .features-list,
@@ -762,23 +860,23 @@ const {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
   }
 
   .feature-item,
   .deliverable-item {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
     color: #cccccc;
-    font-size: 0.9375rem;
-    line-height: 1.6;
+    font-size: 0.875rem;
+    line-height: 1.5;
   }
 
   .check-icon,
   .doc-icon {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     color: #4ade80;
     flex-shrink: 0;
     margin-top: 2px;
@@ -789,105 +887,158 @@ const {
   }
 
   .service-features {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .service-deliverables {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
   }
 
   .service-meta {
     display: flex;
-    gap: 24px;
-    padding-top: 20px;
+    gap: 16px;
+    padding-top: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 12px;
   }
 
   .meta-item {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: #a0a0a0;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
   }
 
   .meta-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     color: #4f63ff;
   }
 
-  /* Process Timeline */
-  .process-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  /* Process Timeline - Compact Horizontal */
+  .process-timeline-compact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 12px;
   }
 
-  .process-step {
+  .process-step-compact {
     position: relative;
     display: flex;
-    gap: 24px;
-    padding-bottom: 40px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
 
-  .process-step:last-child {
-    padding-bottom: 0;
+  .step-card {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px;
+    transition: all 0.3s ease;
   }
 
-  .step-number {
-    width: 48px;
-    height: 48px;
+  .step-card:hover {
+    background: rgba(79, 99, 255, 0.05);
+    border-color: rgba(79, 99, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .step-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .step-number-compact {
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
     border-radius: 50%;
-    font-size: 1.25rem;
+    font-size: 0.875rem;
     font-weight: 700;
     color: #ffffff;
     flex-shrink: 0;
-    position: relative;
-    z-index: 2;
-    box-shadow: 0 4px 16px rgba(79, 99, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(79, 99, 255, 0.3);
   }
 
-  .step-content {
-    flex: 1;
-    padding-top: 4px;
-  }
-
-  .step-title {
-    font-size: 1.25rem;
+  .step-title-compact {
+    font-size: 0.875rem;
     font-weight: 600;
     color: #ffffff;
-    margin-bottom: 8px;
+    margin: 0;
+    flex: 1;
+    line-height: 1.3;
   }
 
-  .step-description {
-    color: #a0a0a0;
-    line-height: 1.7;
-    margin-bottom: 8px;
-  }
-
-  .step-duration {
+  .step-duration-compact {
     display: inline-block;
-    padding: 4px 12px;
+    padding: 2px 8px;
     background: rgba(79, 99, 255, 0.1);
     border: 1px solid rgba(79, 99, 255, 0.2);
-    border-radius: 12px;
+    border-radius: 10px;
     color: #4f63ff;
-    font-size: 0.8125rem;
+    font-size: 0.6875rem;
     font-weight: 500;
+    white-space: nowrap;
   }
 
-  .step-connector {
+  .step-details {
+    width: 100%;
+  }
+
+  .step-summary {
+    cursor: pointer;
+    color: #4f63ff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    list-style: none;
+    user-select: none;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+  }
+
+  .step-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .step-summary::after {
+    content: ' ▼';
+    font-size: 0.625rem;
+  }
+
+  .step-details[open] .step-summary::after {
+    content: ' ▲';
+  }
+
+  .step-summary:hover {
+    color: #8c83b2;
+  }
+
+  .step-description-compact {
+    color: #999;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    margin-top: 8px;
+    animation: slideDown 0.3s ease;
+  }
+
+  .step-arrow {
     position: absolute;
-    left: 23px;
-    top: 48px;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(180deg, rgba(79, 99, 255, 0.3) 0%, rgba(79, 99, 255, 0.1) 100%);
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(79, 99, 255, 0.3);
+    font-size: 1.25rem;
     z-index: 1;
   }
 
@@ -988,28 +1139,36 @@ const {
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
+
+    .process-timeline-compact {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .step-arrow {
+      display: none;
+    }
   }
 
   @media (max-width: 767px) {
     .audit-header {
-      padding: 60px 20px 40px;
+      padding: 40px 20px 30px;
     }
 
     .main-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
 
     .subtitle {
-      font-size: 1.125rem;
+      font-size: 1rem;
     }
 
     .quick-stats {
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 12px;
     }
 
     .stat-number {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
     }
 
     .sidebar {
@@ -1018,7 +1177,7 @@ const {
 
     .section-card,
     .main-card {
-      padding: 24px;
+      padding: 20px;
     }
 
     .cta-buttons {
@@ -1037,6 +1196,62 @@ const {
     .cta-content p {
       font-size: 1rem;
     }
+
+    .process-timeline-compact {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
+
+<script>
+  // Cursor-reactive glow effect
+  const cursorGlow = document.querySelector('.cursor-glow');
+  const auditPage = document.querySelector('.audit-request-page');
+  
+  if (cursorGlow && auditPage) {
+    auditPage.addEventListener('mousemove', (e) => {
+      const rect = auditPage.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      cursorGlow.style.left = `${x}px`;
+      cursorGlow.style.top = `${y}px`;
+    });
+  }
+
+  // Scroll-based highlighting for service offerings and experience items
+  const serviceCards = document.querySelectorAll('.service-card');
+  const experienceItems = document.querySelectorAll('.experience-year-item');
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '-40% 0px -40% 0px',
+    threshold: 0
+  };
+
+  const serviceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const serviceIndex = entry.target.getAttribute('data-service-index');
+        
+        // Remove active class from all cards
+        serviceCards.forEach(card => card.classList.remove('active'));
+        // Add active class to current card
+        entry.target.classList.add('active');
+        
+        // Highlight corresponding experience item
+        experienceItems.forEach((item, idx) => {
+          if (idx === parseInt(serviceIndex)) {
+            item.classList.add('highlighted');
+          } else {
+            item.classList.remove('highlighted');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  serviceCards.forEach(card => {
+    serviceObserver.observe(card);
+  });
+</script>
 
