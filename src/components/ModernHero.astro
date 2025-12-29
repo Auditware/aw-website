@@ -115,10 +115,10 @@ const {
     position: relative;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background: transparent;
     overflow: hidden;
-    padding: var(--spacing-20) 0 var(--spacing-12) 0;
+    padding: var(--spacing-10) 0 var(--spacing-12) 0;
     border-bottom: 1px solid var(--color-border-primary);
   }
 
@@ -138,7 +138,7 @@ const {
     grid-template-columns: 1.1fr 0.9fr;
     gap: var(--spacing-20);
     align-items: center;
-    min-height: 85vh;
+    min-height: auto;
   }
   
   .hero-text {
@@ -154,6 +154,7 @@ const {
     font-size: clamp(2.5rem, 5vw, 5rem);
     font-weight: var(--font-weight-black);
     line-height: 1.15;
+    margin-top: var(--spacing-6);
     margin-bottom: var(--spacing-8);
     color: #ffffff;
     letter-spacing: -0.025em;
@@ -433,12 +434,12 @@ const {
   @media (max-width: 767px) {
     .hero {
       min-height: 90vh;
-      padding: var(--spacing-16) 0;
+      padding: var(--spacing-8) 0;
     }
     
     .hero-grid {
       gap: var(--spacing-12);
-      min-height: 75vh;
+      min-height: auto;
     }
     
     .hero-description {
@@ -459,7 +460,7 @@ const {
   
   @media (max-width: 479px) {
     .hero {
-      padding: var(--spacing-12) 0;
+      padding: var(--spacing-6) 0;
     }
     
     .hero-badges {

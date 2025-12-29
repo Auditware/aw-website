@@ -346,22 +346,62 @@ h6 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 100%);
+  background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 50%, #8b5cf6 100%);
+  background-size: 200% 200%;
   color: var(--color-text-primary);
   box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.2), 
               0 4px 12px rgba(124, 58, 237, 0.25),
               inset 0 1px 0 rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(124, 58, 237, 0.3);
   position: relative;
+  animation: gradient-shift 3s ease infinite;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%);
+  background-size: 200% 200%;
   box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.3),
               0 6px 16px rgba(124, 58, 237, 0.3),
               inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transform: translateY(-2px) scale(1.02);
   border-color: rgba(139, 92, 246, 0.4);
+  animation: gradient-shift 1.5s ease infinite;
 }
 
 .btn-secondary {
