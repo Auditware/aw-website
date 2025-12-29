@@ -31,8 +31,8 @@ const experienceWithFill = sortedExperience.map(exp => ({
         <div class="badge-container">
           <span class="status-badge">Available for Projects</span>
         </div>
-        <h1 class="main-title">Security Audit Services</h1>
-        <p class="subtitle">Enterprise-grade security assessments for Web3 organizations</p>
+        <h1 class="main-title">Security Audits</h1>
+        <p class="subtitle">Professional security assessments for Web3 organizations</p>
         
         <div class="quick-stats">
           <div class="stat-item">
@@ -52,8 +52,8 @@ const experienceWithFill = sortedExperience.map(exp => ({
       
       <div class="header-right">
         <div class="contact-card">
-          <h3>Ready to Get Started?</h3>
-          <p>Book a free 30-minute consultation</p>
+          <h3>Get Started</h3>
+          <p>30-minute consultation</p>
           <a href="https://calendly.com/d/cnqr-49f-xdy/auditware-consultation" class="cta-button-primary">
             Schedule Consultation
           </a>
@@ -127,7 +127,14 @@ const experienceWithFill = sortedExperience.map(exp => ({
         </div>
         <div class="clients-grid-compact">
           {trustedBy.map(client => (
-            <img src={client.logo} alt={client.name} class="client-logo-compact" loading="lazy" />
+            <img 
+              src={client.logo} 
+              alt={client.name} 
+              width={client.width || 360} 
+              height={client.height || 120}
+              class="client-logo-compact" 
+              loading="lazy" 
+            />
           ))}
         </div>
       </div>
@@ -136,15 +143,21 @@ const experienceWithFill = sortedExperience.map(exp => ({
         <div class="slim-header">
           <h4>Compliance</h4>
         </div>
-        <div class="framework-badges-compact">
-          <div class="framework-badge-compact">
-            <img src="/images/W3OS-Graphic.png" alt="W3OS" class="framework-icon-compact" />
-            <span>W3OS</span>
-          </div>
-          <div class="framework-badge-compact">
-            <img src="/images/framework-logomark-circle-blue.svg" alt="SEAL" class="framework-icon-compact" />
-            <span>SEAL</span>
-          </div>
+        <div class="compliance-badges">
+          <a href="https://github.com/W3OSC/web3-opsec-standard" target="_blank" rel="noopener noreferrer" title="W3OS Compliance">
+            <img 
+              src="/images/W3OS-Graphic.png" 
+              alt="W3OS Compliance" 
+              class="compliance-icon" 
+            />
+          </a>
+          <a href="https://frameworks.securityalliance.org/" target="_blank" rel="noopener noreferrer" title="SEAL Certification">
+            <img 
+              src="https://images.typeform.com/images/85jp8NBEtu4u" 
+              alt="SEAL Certification" 
+              class="compliance-icon" 
+            />
+          </a>
         </div>
       </div>
     </aside>
@@ -225,52 +238,6 @@ const experienceWithFill = sortedExperience.map(exp => ({
         </div>
       </div>
 
-      <!-- Audit Process - Compact Interactive -->
-      <div class="section-card main-card">
-        <div class="section-header">
-          <div class="section-icon">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
-            </svg>
-          </div>
-          <h2>Our Audit Process</h2>
-        </div>
-        
-        <div class="process-timeline-compact">
-          {processSteps.map((step, index) => (
-            <div class="process-step-compact" data-step={index}>
-              <div class="step-card">
-                <div class="step-top">
-                  <div class="step-number-compact">{index + 1}</div>
-                  <h4 class="step-title-compact">{step.title}</h4>
-                  {step.duration && <span class="step-duration-compact">{step.duration}</span>}
-                </div>
-                <details class="step-details">
-                  <summary class="step-summary">Details</summary>
-                  <p class="step-description-compact">{step.description}</p>
-                </details>
-              </div>
-              {index < processSteps.length - 1 && <div class="step-arrow">→</div>}
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Final CTA -->
-      <div class="final-cta">
-        <div class="cta-content">
-          <h3>Ready to Secure Your Organization?</h3>
-          <p>Let's discuss how we can protect your project with a comprehensive security audit.</p>
-          <div class="cta-buttons">
-            <a href="https://calendly.com/d/cnqr-49f-xdy/auditware-consultation" class="cta-button-primary large">
-              Schedule Free Consultation
-            </a>
-            <a href="mailto:contact@auditware.io" class="cta-button-secondary large">
-              Email Us Directly
-            </a>
-          </div>
-        </div>
-      </div>
     </main>
   </div>
 </section>
@@ -687,40 +654,48 @@ const experienceWithFill = sortedExperience.map(exp => ({
   .clients-grid-compact {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 16px;
+    align-items: center;
   }
 
   .client-logo-compact {
     max-width: 100%;
-    height: 24px;
+    height: 80px;
     width: auto;
     opacity: 0.6;
     transition: opacity 0.3s ease;
+    filter: grayscale(100%) brightness(1.2);
+    object-fit: contain;
   }
 
   .client-logo-compact:hover {
     opacity: 1;
+    filter: grayscale(0%) brightness(1);
   }
 
-  /* Framework Badges - Compact */
-  .framework-badges-compact {
+  /* Compliance Badges */
+  .compliance-badges {
     display: flex;
-    gap: 10px;
-  }
-
-  .framework-badge-compact {
-    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 6px;
-    font-size: 0.75rem;
-    color: #999;
-    font-weight: 500;
   }
 
-  .framework-icon-compact {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
+  .compliance-badges a {
+    display: inline-flex;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
+
+  .compliance-badges a:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+
+  .compliance-icon {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
   }
 
   /* Service Cards */
