@@ -21,6 +21,9 @@ const experienceWithFill = sortedExperience.map(exp => ({
   <!-- Cursor-reactive background -->
   <div class="cursor-glow"></div>
   
+  <!-- Dotted Background Pattern -->
+  <div class="dotted-background"></div>
+  
   <!-- Hero Header Section -->
   <div class="audit-header">
     <div class="header-content">
@@ -298,6 +301,20 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
   .audit-request-page:hover .cursor-glow {
     opacity: 1;
+  }
+
+  /* Dotted Background Pattern */
+  .dotted-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.15;
+    background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.4) 2px, transparent 0);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: -1;
   }
 
   /* Header Section - More Compact */

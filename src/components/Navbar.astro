@@ -28,11 +28,7 @@
                 <a href="/audit-wizard" class="nav-button" data-page="audit-wizard">Audit Wizard</a>
                 <a href="/sentry" class="nav-button" data-page="sentry">Sentry</a>
                 <a href="/radar" class="nav-button" data-page="radar">Radar</a>
-                <a href="https://github.com/W3OSC/web3-opsec-standard/tree/main" target="_blank" class="nav-button w3os-button" data-page="w3os">
-                  <img src="/images/GitHub_Invertocat_Light.svg" loading="lazy" width="14" alt="" class="github-icon-inline" />
-                  W3OS
-                </a>
-                <a href="/request-an-audit" class="nav-button" data-page="audits">Audits</a>
+                <a href="/request-an-audit" class="nav-button nav-button-cta" data-page="audits">Audits</a>
               </div>
             </div>
           </nav>
@@ -188,8 +184,8 @@
 
   /* Colored Outlines for Each Page */
   .nav-button[data-page="home"]:hover {
-    border-color: rgba(79, 99, 255, 0.5);
-    box-shadow: 0 0 12px rgba(79, 99, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
   }
 
   .nav-button[data-page="audit-wizard"]:hover {
@@ -207,25 +203,24 @@
     box-shadow: 0 0 12px rgba(33, 76, 64, 0.5);
   }
 
-  .nav-button[data-page="w3os"]:hover {
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
-  }
-
   .nav-button[data-page="audits"]:hover {
     border-color: rgba(59, 130, 246, 0.5);
     box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
   }
 
-  /* GitHub icon inline in W3OS button */
-  .github-icon-inline {
-    opacity: 0.8;
-    transition: opacity var(--transition-base);
-    display: inline-block;
+  /* CTA Button - Primary Audits Button */
+  .nav-button-cta {
+    background: var(--color-background-glass-medium);
+    border: 1px solid #4f63ff;
+    box-shadow: 0 0 12px rgba(79, 99, 255, 0.3);
+    font-weight: 600;
   }
 
-  .w3os-button:hover .github-icon-inline {
-    opacity: 1;
+  .nav-button-cta:hover {
+    background: rgba(79, 99, 255, 0.1);
+    border-color: #6d7fff;
+    box-shadow: 0 0 20px rgba(79, 99, 255, 0.5);
+    transform: translateY(-2px);
   }
 
   /* Burger Menu */

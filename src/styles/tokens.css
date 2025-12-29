@@ -67,6 +67,12 @@
   --font-family-display: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-family-body: 'Inter', 'SF Pro Text', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-family-mono: 'JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+  
+  /* Font Aliases for Backward Compatibility */
+  --font-display: var(--font-family-display);
+  --font-primary: var(--font-family-body);
+  --font-secondary: var(--font-family-body);
+  --font-mono: var(--font-family-mono);
 
   /* Font Sizes */
   --font-size-xs: 0.75rem;     /* 12px */
@@ -81,6 +87,8 @@
   --font-size-6xl: 3.75rem;    /* 60px */
   --font-size-7xl: 4.5rem;     /* 72px */
   --font-size-8xl: 6rem;       /* 96px */
+  --font-size-9xl: 8rem;       /* 128px */
+  --font-size-10xl: 10rem;     /* 160px */
 
   /* Font Weights */
   --font-weight-light: 300;
@@ -144,6 +152,19 @@
   --spacing-72: 18rem;         /* 288px */
   --spacing-80: 20rem;         /* 320px */
   --spacing-96: 24rem;         /* 384px */
+  
+  /* Spacing Aliases (for --space-* compatibility) */
+  --space-0: var(--spacing-0);
+  --space-1: var(--spacing-1);
+  --space-2: var(--spacing-2);
+  --space-3: var(--spacing-3);
+  --space-4: var(--spacing-4);
+  --space-5: var(--spacing-5);
+  --space-6: var(--spacing-6);
+  --space-7: var(--spacing-7);
+  --space-8: var(--spacing-8);
+  --space-9: var(--spacing-9);
+  --space-10: var(--spacing-10);
 
   /* Border Radius */
   --radius-none: 0;
@@ -189,6 +210,9 @@
   --container-xl: 1280px;
   --container-2xl: 1536px;
   --container-max: 1640px;
+  
+  /* Layout Aliases */
+  --max-width-container: var(--container-max);
 
   /* Z-Index Scale */
   --z-index-hide: -1;

@@ -45,7 +45,7 @@ const {
 } = Astro.props;
 ---
 
-<footer class="footer section">
+<footer class="footer">
   <div class="container">
     <div class="footer-wrapper">
       <a href="/" class="footer-brand">
@@ -56,26 +56,23 @@ const {
           alt={logo.alt} 
           class="footer-brand-image" 
         />
-        <div class="footer-paragraph-holder">
-          <p class="paragraph-26">{tagline}</p>
-        </div>
       </a>
-      <div class="footer-content">
+      <div class="footer-links">
         {sections.map((section) => (
-          <div class="footer-block">
-            <div class="title-small">{section.title}</div>
-            {section.links.map((link) => (
-              <a 
-                href={link.href} 
-                class="footer-link"
-                target={link.external ? "_blank" : undefined}
-                rel={link.external ? "noopener noreferrer" : undefined}
-              >
-                {link.text}
-              </a>
-            ))}
-          </div>
+          section.links.map((link) => (
+            <a 
+              href={link.href} 
+              class="footer-link"
+              target={link.external ? "_blank" : undefined}
+              rel={link.external ? "noopener noreferrer" : undefined}
+            >
+              {link.text}
+            </a>
+          ))
         ))}
+      </div>
+      <div class="footer-copyright">
+        © {new Date().getFullYear()} Auditware
       </div>
     </div>
   </div>
@@ -83,7 +80,7 @@ const {
 
 <style>
   .footer {
-    padding: var(--spacing-24) 0 var(--spacing-16);
+    padding: var(--spacing-8) 0;
     background: transparent;
     border-top: 1px solid var(--color-border-primary);
     position: relative;
@@ -103,141 +100,88 @@ const {
   .footer-wrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--spacing-16);
-    padding-top: var(--spacing-4);
+    align-items: center;
+    gap: var(--spacing-8);
   }
   
   .footer-brand {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     text-decoration: none;
-    max-width: 340px;
-    transition: transform var(--transition-base);
+    transition: opacity var(--transition-base);
   }
   
   .footer-brand:hover {
-    transform: translateY(-2px);
+    opacity: 0.85;
   }
   
   .footer-brand-image {
     height: auto;
-    margin-bottom: var(--spacing-6);
-    max-width: 180px;
-    transition: opacity var(--transition-base);
+    max-width: 140px;
   }
   
-  .footer-brand:hover .footer-brand-image {
-    opacity: 0.85;
-  }
-  
-  .footer-paragraph-holder {
-    width: 100%;
-  }
-  
-  .paragraph-26 {
-    color: var(--color-text-tertiary);
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
-    margin: 0;
-  }
-  
-  .footer-content {
+  .footer-links {
     display: flex;
-    gap: var(--spacing-16);
+    gap: var(--spacing-6);
+    align-items: center;
     flex: 1;
-    justify-content: flex-end;
-  }
-  
-  .footer-block {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-4);
-    min-width: 140px;
-  }
-  
-  .title-small {
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-3);
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing-wider);
+    justify-content: center;
   }
   
   .footer-link {
     color: var(--color-text-secondary);
     text-decoration: none;
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-sm);
     transition: all var(--transition-base);
-    position: relative;
-    width: fit-content;
-  }
-  
-  .footer-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--gradient-primary);
-    transition: width var(--transition-base);
+    white-space: nowrap;
   }
   
   .footer-link:hover {
     color: var(--color-primary-400);
-    transform: translateX(4px);
   }
   
-  .footer-link:hover::after {
-    width: 100%;
+  .footer-copyright {
+    color: var(--color-text-tertiary);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
   }
   
   @media (max-width: 991px) {
     .footer {
-      padding: var(--spacing-20) 0 var(--spacing-12);
+      padding: var(--spacing-6) 0;
     }
     
     .footer-wrapper {
       flex-direction: column;
-      gap: var(--spacing-12);
-      text-align: center;
+      gap: var(--spacing-4);
     }
     
-    .footer-brand {
-      align-items: center;
-      max-width: none;
-    }
-    
-    .footer-content {
+    .footer-links {
+      flex-wrap: wrap;
       justify-content: center;
-      gap: var(--spacing-12);
-      width: 100%;
-    }
-    
-    .footer-link {
-      margin: 0 auto;
+      gap: var(--spacing-4);
     }
   }
   
   @media (max-width: 479px) {
     .footer {
-      padding: var(--spacing-16) 0 var(--spacing-10);
+      padding: var(--spacing-5) 0;
     }
     
-    .footer-content {
-      flex-direction: column;
-      gap: var(--spacing-10);
+    .footer-brand-image {
+      max-width: 120px;
     }
     
-    .footer-block {
-      text-align: center;
+    .footer-links {
+      gap: var(--spacing-3);
     }
     
     .footer-link {
-      margin: 0 auto;
+      font-size: var(--font-size-xs);
+    }
+    
+    .footer-copyright {
+      font-size: var(--font-size-xs);
     }
   }
 </style>

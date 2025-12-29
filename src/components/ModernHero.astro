@@ -104,7 +104,9 @@ const {
   <div class="hero-bg-elements">
     <div class="hero-gradient-1"></div>
     <div class="hero-gradient-2"></div>
+    <div class="hero-gradient-3"></div>
     <div class="hero-grid-pattern"></div>
+    <div class="hero-dotted-pattern"></div>
   </div>
 </section>
 
@@ -116,7 +118,8 @@ const {
     align-items: center;
     background: transparent;
     overflow: hidden;
-    padding: var(--spacing-20) 0;
+    padding: var(--spacing-20) 0 var(--spacing-12) 0;
+    border-bottom: 1px solid var(--color-border-primary);
   }
 
   /* Green Theme - Hero Background */
@@ -126,7 +129,7 @@ const {
   
   .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     width: 100%;
   }
   
@@ -282,7 +285,7 @@ const {
     right: 0;
     bottom: 0;
     pointer-events: none;
-    z-index: 1;
+    z-index: 0;
   }
   
   .hero-gradient-1 {
@@ -303,6 +306,15 @@ const {
     background: radial-gradient(ellipse, rgba(124, 58, 237, 0.15) 0%, transparent 50%);
   }
 
+  .hero-gradient-3 {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    width: 40%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(79, 99, 255, 0.12) 0%, transparent 60%);
+  }
+
   /* Green Theme - Background Gradients */
   .hero-green .hero-gradient-1 {
     background: radial-gradient(ellipse, rgba(33, 76, 64, 0.3) 0%, transparent 50%);
@@ -310,6 +322,10 @@ const {
   
   .hero-green .hero-gradient-2 {
     background: radial-gradient(ellipse, rgba(59, 130, 100, 0.25) 0%, transparent 50%);
+  }
+
+  .hero-green .hero-gradient-3 {
+    background: radial-gradient(circle, rgba(45, 106, 83, 0.2) 0%, transparent 60%);
   }
 
   /* Green Theme - Button Styling */
@@ -364,6 +380,25 @@ const {
   .hero-green .hero-grid-pattern {
     background-image: 
       radial-gradient(circle at 1px 1px, rgba(59, 130, 100, 0.08) 1px, transparent 0);
+  }
+
+  /* Dotted Background Pattern */
+  .hero-dotted-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.15;
+    background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.4) 2px, transparent 0);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Green Theme - Dotted Pattern */
+  .hero-green .hero-dotted-pattern {
+    background-image: radial-gradient(circle at 25px 25px, rgba(89, 184, 134, 0.4) 2px, transparent 0);
   }
   
   
