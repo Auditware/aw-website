@@ -1,6 +1,6 @@
 # Auditware Website
 
-A static, code-first website rebuilt from Webflow export using Astro, MDX, and Storybook. This ensures visual design fidelity while enabling AI-driven iteration and safe collaboration with non-technical contributors.
+A static, code-first website rebuilt from Webflow export using Astro, MDX, and Storybook.
 
 ## 🚀 Quick Start
 
