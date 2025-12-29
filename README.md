@@ -192,5 +192,3 @@ npm run preview         # Preview built site
 ```
 
 ---
-
-**Remember**: Keep components boring and predictable. Prefer clarity over cleverness. The goal is long-term maintainability and safe collaboration.
