@@ -113,12 +113,11 @@ const {
 <style>
   .hero {
     position: relative;
-    min-height: 100vh;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     background: transparent;
     overflow: hidden;
-    padding: var(--spacing-10) 0 var(--spacing-6) 0;
+    padding: var(--spacing-8) 0;
     border-bottom: 1px solid var(--color-border-primary);
   }
 
@@ -433,8 +432,7 @@ const {
   
   @media (max-width: 767px) {
     .hero {
-      min-height: 90vh;
-      padding: var(--spacing-8) 0 var(--spacing-4) 0;
+      padding: var(--spacing-6) 0;
     }
     
     .hero-grid {
@@ -460,7 +458,7 @@ const {
   
   @media (max-width: 479px) {
     .hero {
-      padding: var(--spacing-6) 0 var(--spacing-3) 0;
+      padding: var(--spacing-4) 0;
     }
     
     .hero-badges {

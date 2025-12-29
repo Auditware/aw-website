@@ -1,0 +1,185 @@
+---
+---
+
+<section class="feature-stack-section section">
+  <div class="video-container">
+    <div class="video-label">
+      <img 
+        src="/images/Sentry-logo.png" 
+        alt="Sentry Logo" 
+        class="sentry-logo"
+        loading="lazy"
+      />
+    </div>
+    <div class="video-wrapper">
+      <div class="video-glow"></div>
+      <video 
+        class="sentry-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="https://via.placeholder.com/1920x1080/000000/FFFFFF?text=Sentry+Video"
+      >
+        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+
+<style>
+  .feature-stack-section {
+    padding: 120px 0;
+    background: #000000;
+    overflow: hidden;
+  }
+
+  .video-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .video-label {
+    text-align: center;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sentry-logo {
+    height: 86px;
+    width: auto;
+    max-width: 280px;
+    object-fit: contain;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #000000;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .video-glow {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+    border-radius: 18px;
+    opacity: 0.6;
+    filter: blur(20px);
+    z-index: -1;
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  .sentry-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1199px) {
+    .feature-stack-section {
+      padding: 100px 0;
+    }
+
+    .video-container {
+      padding: 0 20px;
+    }
+
+    .video-label {
+      margin-bottom: 40px;
+    }
+
+    .sentry-logo {
+      height: 72px;
+      max-width: 240px;
+    }
+
+    .video-wrapper {
+      border-radius: 16px;
+    }
+
+    .video-glow {
+      border-radius: 16px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .feature-stack-section {
+      padding: 80px 0;
+    }
+
+    .video-container {
+      padding: 0 16px;
+    }
+
+    .video-label {
+      margin-bottom: 32px;
+    }
+
+    .sentry-logo {
+      height: 60px;
+      max-width: 200px;
+    }
+
+    .video-wrapper {
+      border-radius: 12px;
+    }
+
+    .video-glow {
+      border-radius: 12px;
+      filter: blur(15px);
+    }
+  }
+
+  @media (max-width: 479px) {
+    .feature-stack-section {
+      padding: 60px 0;
+    }
+
+    .video-container {
+      padding: 0 12px;
+    }
+
+    .video-label {
+      margin-bottom: 24px;
+    }
+
+    .sentry-logo {
+      height: 48px;
+      max-width: 160px;
+    }
+
+    .video-wrapper {
+      border-radius: 10px;
+    }
+
+    .video-glow {
+      border-radius: 10px;
+      filter: blur(12px);
+    }
+  }
+</style>
+

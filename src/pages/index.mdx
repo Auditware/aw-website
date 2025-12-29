@@ -9,7 +9,7 @@ import ModernHero from '../components/ModernHero.astro';
 import LogoCarousel from '../components/LogoCarousel.astro';
 import FrameworksSection from '../components/FrameworksSection.astro';
 import ServiceToggle from '../components/ServiceToggle.astro';
-import FeatureStack from '../components/FeatureStack.astro';
+import SentryVideoShowcase from '../components/SentryVideoShowcase.astro';
 import StatsSection from '../components/StatsSection.astro';
 import ExpertiseSection from '../components/ExpertiseSection.astro';
 import CTASection from '../components/CTASection.astro';
@@ -124,33 +124,7 @@ import Footer from '../components/Footer.astro';
   ]}
 />
 
-<FeatureStack
-  title="Advanced Security Monitoring with Sentry"
-  subtitle="Our proprietary OpSec platform provides continuous monitoring and protection for your organization's most critical assets."
-  features={[
-    {
-      id: "continuous-monitoring",
-      title: "Continuous OpSec Monitoring",
-      description: "24/7 monitoring of your organization's security posture with real-time alerts for potential compromises, policy violations, and suspicious activities across all team members and systems.",
-      image: "/images/Screenshot-2025-07-14-at-2.47.39-PM.png",
-      imageAlt: "Sentry Continuous Monitoring Dashboard",
-    },
-    {
-      id: "devops-security",
-      title: "DevOps Security Integration",
-      description: "Deep integration with development workflows including GitHub anomaly detection, code scanning automation, and CI/CD pipeline security monitoring to catch issues before they reach production.",
-      image: "/images/Screenshot-2025-07-14-at-2.45.47-PM.png",
-      imageAlt: "DevOps Security Monitoring",
-    },
-    {
-      id: "compromise-detection",
-      title: "Advanced Threat Detection",
-      description: "Machine learning-powered detection of device compromise, credential theft, and account takeover attempts. Our EDR capabilities block exploit attempts in real-time while maintaining detailed forensic logs.",
-      image: "/images/Screenshot-2025-07-14-at-2.19.06-PM.png",
-      imageAlt: "Threat Detection Interface",
-    }
-  ]}
-/>
+<SentryVideoShowcase />
 
 <StatsSection />
 
