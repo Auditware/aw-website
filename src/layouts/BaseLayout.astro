@@ -6,9 +6,15 @@ export interface Props {
   title: string;
   description?: string;
   image?: string;
+  canonical?: string;
 }
 
-const { title, description = "Operational security audits for web3 organizations, active compromise monitoring, and rapid incident response.", image = "/images/HP-Grph-image.png" } = Astro.props;
+const { title, description = "Operational security audits for web3 organizations, active compromise monitoring, and rapid incident response.", image = "/images/HP-Grph-image.png", canonical } = Astro.props;
+
+// Construct canonical URL - use provided canonical or generate from current URL
+const siteUrl = 'https://auditware.io';
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
+const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
 ---
 
 <!DOCTYPE html>
@@ -16,20 +22,26 @@ const { title, description = "Operational security audits for web3 organizations
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalUrl} />
   
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={image} />
+  <meta property="og:image" content={imageUrl} />
+  <meta property="og:url" content={canonicalUrl} />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Auditware" />
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={image} />
+  <meta name="twitter:image" content={imageUrl} />
   
   <!-- Favicon -->
   <link href="/images/favicon.png" rel="shortcut icon" type="image/x-icon" />

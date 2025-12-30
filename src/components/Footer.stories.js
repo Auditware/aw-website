@@ -40,9 +40,8 @@ const Template = ({
     {
       title: "Company",
       links: [
-        { text: "About Us", href: "/about-us" },
+        { text: "About Us", href: "/about" },
         { text: "Press", href: "/press" },
-        { text: "Tools", href: "/tools" },
         { text: "Blog", href: "/blog" }
       ]
     },
@@ -237,9 +236,8 @@ ExtendedFooter.args = {
     {
       title: "Company",
       links: [
-        { text: "About Us", href: "/about-us" },
+        { text: "About Us", href: "/about" },
         { text: "Press", href: "/press" },
-        { text: "Tools", href: "/tools" },
         { text: "Blog", href: "/blog" }
       ]
     },
