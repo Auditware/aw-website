@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface Props {
   title: string;
   subtitle?: string;
@@ -58,7 +60,11 @@ const {
               {badges.map((badge) => (
                 <a href={badge.href} class="framework-badge-icon-link" target="_blank" rel="noopener noreferrer" title={badge.text}>
                   {badge.icon && (
-                    <img src={badge.icon} alt={badge.text} class="framework-badge-icon" />
+                    badge.icon.startsWith('http') ? (
+                      <img src={badge.icon} alt={badge.text} class="framework-badge-icon" loading="lazy" />
+                    ) : (
+                      <Image src={badge.icon} alt={badge.text} class="framework-badge-icon" width={48} height={48} loading="lazy" />
+                    )
                   )}
                 </a>
               ))}
@@ -86,12 +92,24 @@ const {
         {imageUrl && (
           <div class="hero-visual">
             <div class="hero-image-container">
-              <img 
-                src={imageUrl} 
-                alt={imageAlt}
-                class="hero-image"
-                loading="eager"
-              />
+              {imageUrl.startsWith('http') ? (
+                <img 
+                  src={imageUrl} 
+                  alt={imageAlt}
+                  class="hero-image"
+                  loading="eager"
+                />
+              ) : (
+                <Image 
+                  src={imageUrl} 
+                  alt={imageAlt}
+                  class="hero-image"
+                  width={650}
+                  height={450}
+                  loading="eager"
+                  format="webp"
+                />
+              )}
               <div class="hero-image-glow"></div>
             </div>
           </div>

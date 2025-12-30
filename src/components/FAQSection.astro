@@ -1,0 +1,207 @@
+---
+export interface Props {
+  faqs: Array<{
+    question: string;
+    answer: string;
+  }>;
+  title?: string;
+  subtitle?: string;
+}
+
+const { faqs, title = "Frequently Asked Questions", subtitle } = Astro.props;
+---
+
+<section class="faq-section">
+  <div class="container">
+    {(title || subtitle) && (
+      <div class="faq-header">
+        {subtitle && <p class="faq-subtitle">{subtitle}</p>}
+        {title && <h2 class="faq-title">{title}</h2>}
+      </div>
+    )}
+    
+    <div class="faq-list">
+      {faqs.map((faq, index) => (
+        <div class="faq-item" data-faq={index}>
+          <button class="faq-question" aria-expanded="false" data-faq-toggle={index}>
+            <span class="faq-question-text">{faq.question}</span>
+            <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="faq-answer" data-faq-content={index}>
+            <div class="faq-answer-inner">
+              {faq.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqToggles = document.querySelectorAll('[data-faq-toggle]');
+    
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', () => {
+        const index = toggle.getAttribute('data-faq-toggle');
+        const content = document.querySelector(`[data-faq-content="${index}"]`);
+        const item = toggle.closest('.faq-item');
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        
+        // Close all other FAQs
+        document.querySelectorAll('.faq-item').forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('active');
+            const otherToggle = otherItem.querySelector('[data-faq-toggle]');
+            otherToggle?.setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        // Toggle current FAQ
+        if (isExpanded) {
+          item.classList.remove('active');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('active');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .faq-section {
+    padding: var(--spacing-24) 0;
+    background: var(--color-background-primary);
+  }
+  
+  .container {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 2em;
+  }
+  
+  .faq-header {
+    text-align: center;
+    margin-bottom: var(--spacing-16);
+  }
+  
+  .faq-subtitle {
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-2);
+  }
+  
+  .faq-title {
+    font-size: var(--font-size-7xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+  
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-4);
+  }
+  
+  .faq-item {
+    background: var(--color-background-secondary);
+    border: 1px solid var(--color-border-primary);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+  }
+  
+  .faq-item:hover {
+    border-color: var(--color-border-strong);
+  }
+  
+  .faq-item.active {
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 1px var(--color-primary-500);
+  }
+  
+  .faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-6);
+    background: transparent;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    text-align: left;
+    cursor: pointer;
+    transition: background var(--transition-base);
+  }
+  
+  .faq-question:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .faq-question-text {
+    flex: 1;
+    padding-right: var(--spacing-4);
+  }
+  
+  .faq-icon {
+    flex-shrink: 0;
+    color: var(--color-text-secondary);
+    transition: transform var(--transition-base);
+  }
+  
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition-slow) ease-out;
+  }
+  
+  .faq-item.active .faq-answer {
+    max-height: 1000px;
+    transition: max-height var(--transition-slow) ease-in;
+  }
+  
+  .faq-answer-inner {
+    padding: 0 var(--spacing-6) var(--spacing-6);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+  }
+  
+  /* Responsive */
+  @media (max-width: 767px) {
+    .faq-section {
+      padding: var(--spacing-16) 0;
+    }
+    
+    .faq-title {
+      font-size: var(--font-size-5xl);
+    }
+    
+    .faq-question {
+      font-size: var(--font-size-base);
+      padding: var(--spacing-5);
+    }
+    
+    .faq-answer-inner {
+      padding: 0 var(--spacing-5) var(--spacing-5);
+      font-size: var(--font-size-sm);
+    }
+  }
+</style>
+

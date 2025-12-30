@@ -1,0 +1,113 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: "FAQ - Frequently Asked Questions | Auditware"
+description: "Find answers to common questions about Auditware's Web3 security audits, OpSec services, and Sentry platform."
+image: "/images/HP-Grph-image.png"
+structuredData:
+  "@context": "https://schema.org"
+  "@type": "FAQPage"
+  mainEntity:
+    - "@type": "Question"
+      name: "What is an OpSec audit?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text": "An Operational Security (OpSec) audit is a comprehensive review of your organization's security posture. Unlike smart contract audits that focus solely on code, OpSec audits examine your entire organization including team security practices, infrastructure, key management, communication protocols, and processes. We identify vulnerabilities across all operational domains and provide actionable remediation guidance."
+    - "@type": "Question"
+      name: "How long does a security audit take?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Timeline varies by audit type: Smart Contract Audits typically take 2-4 weeks, OpSec Audits require 3-6 weeks, Infrastructure Security Assessments take 2-3 weeks, and Web Application Penetration Tests need 1-3 weeks. The exact duration depends on your project's complexity and scope."
+    - "@type": "Question"
+      name: "What is the Sentry platform?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Sentry is our flagship OpSec monitoring platform that provides continuous security oversight for Web3 organizations. It monitors for device compromise, credential exposure, GitHub repository security, DNS tampering, and operational security violations in real-time. Sentry helps you maintain security compliance and detect threats before they become incidents."
+    - "@type": "Question"
+      name: "Do you provide post-audit support?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes! All audits include post-audit support. For OpSec audits, we provide 90 days of support and remediation verification. Smart contract audits include a complete re-audit after fixes are implemented. We're available throughout the remediation process to answer questions and provide guidance."
+    - "@type": "Question"
+      name: "What frameworks do you follow?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Our audits are compliant with the W3OS (Web3 Operational Security Standard) and SEAL (Security Engineering and Auditing Language) frameworks. These industry-leading standards ensure comprehensive, systematic security assessment of your organization."
+    - "@type": "Question"
+      name: "How much does an audit cost?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Audit costs vary based on scope, complexity, and timeline. We provide custom quotes after an initial consultation where we understand your specific needs. Contact us for a free consultation and detailed proposal."
+    - "@type": "Question"
+      name: "What blockchains do you support?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "We audit smart contracts on EVM-based chains (Ethereum, Polygon, Arbitrum, Optimism, BSC, Avalanche, etc.) and Solana. We also conduct security assessments for Layer 1 and Layer 2 protocols."
+    - "@type": "Question"
+      name: "Can you help with incident response?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes, we offer rapid incident response services. If you suspect a security incident or compromise, contact us immediately. Our team can help contain the threat, assess damage, and develop a recovery plan."
+---
+
+import Navbar from '../components/Navbar.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import SimplePageHeader from '../components/SimplePageHeader.astro';
+import FAQSection from '../components/FAQSection.astro';
+import CTASection from '../components/CTASection.astro';
+import Footer from '../components/Footer.astro';
+
+<Navbar />
+
+<Breadcrumb 
+  items={[
+    { name: "Home", href: "/" },
+    { name: "FAQ" }
+  ]}
+/>
+
+<SimplePageHeader 
+  title="Frequently Asked Questions"
+  description="Everything you need to know about Auditware's security services"
+/>
+
+<FAQSection
+  faqs={[
+    {
+      question: "What is an OpSec audit?",
+      answer: "An Operational Security (OpSec) audit is a comprehensive review of your organization's security posture. Unlike smart contract audits that focus solely on code, OpSec audits examine your entire organization including team security practices, infrastructure, key management, communication protocols, and processes. We identify vulnerabilities across all operational domains and provide actionable remediation guidance."
+    },
+    {
+      question: "How long does a security audit take?",
+      answer: "Timeline varies by audit type: Smart Contract Audits typically take 2-4 weeks, OpSec Audits require 3-6 weeks, Infrastructure Security Assessments take 2-3 weeks, and Web Application Penetration Tests need 1-3 weeks. The exact duration depends on your project's complexity and scope."
+    },
+    {
+      question: "What is the Sentry platform?",
+      answer: "Sentry is our flagship OpSec monitoring platform that provides continuous security oversight for Web3 organizations. It monitors for device compromise, credential exposure, GitHub repository security, DNS tampering, and operational security violations in real-time. Sentry helps you maintain security compliance and detect threats before they become incidents."
+    },
+    {
+      question: "Do you provide post-audit support?",
+      answer: "Yes! All audits include post-audit support. For OpSec audits, we provide 90 days of support and remediation verification. Smart contract audits include a complete re-audit after fixes are implemented. We're available throughout the remediation process to answer questions and provide guidance."
+    },
+    {
+      question: "What frameworks do you follow?",
+      answer: "Our audits are compliant with the W3OS (Web3 Operational Security Standard) and SEAL (Security Engineering and Auditing Language) frameworks. These industry-leading standards ensure comprehensive, systematic security assessment of your organization."
+    },
+    {
+      question: "How much does an audit cost?",
+      answer: "Audit costs vary based on scope, complexity, and timeline. We provide custom quotes after an initial consultation where we understand your specific needs. Contact us for a free consultation and detailed proposal."
+    },
+    {
+      question: "What blockchains do you support?",
+      answer: "We audit smart contracts on EVM-based chains (Ethereum, Polygon, Arbitrum, Optimism, BSC, Avalanche, etc.) and Solana. We also conduct security assessments for Layer 1 and Layer 2 protocols."
+    },
+    {
+      question: "Can you help with incident response?",
+      answer: "Yes, we offer rapid incident response services. If you suspect a security incident or compromise, contact us immediately. Our team can help contain the threat, assess damage, and develop a recovery plan."
+    }
+  ]}
+/>
+
+<CTASection />
+
+<Footer />
+

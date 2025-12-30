@@ -3,18 +3,74 @@ import '../styles/tokens.css';
 import '../styles/global.css';
 
 export interface Props {
-  title: string;
+  title?: string;
   description?: string;
   image?: string;
   canonical?: string;
+  structuredData?: any;
+  googleAnalyticsId?: string;
+  frontmatter?: {
+    title?: string;
+    description?: string;
+    image?: string;
+    canonical?: string;
+    googleAnalyticsId?: string;
+  };
 }
 
-const { title, description = "Operational security audits for web3 organizations, active compromise monitoring, and rapid incident response.", image = "/images/HP-Grph-image.png", canonical } = Astro.props;
+// Handle both direct props and MDX frontmatter
+const props = Astro.props;
+const frontmatter = props.frontmatter || {};
+const title = props.title || frontmatter.title || "Auditware";
+const description = props.description || frontmatter.description || "Operational security audits for web3 organizations, active compromise monitoring, and rapid incident response.";
+const image = props.image || frontmatter.image || "/images/HP-Grph-image.png";
+const canonical = props.canonical || frontmatter.canonical;
+const structuredData = props.structuredData || frontmatter.structuredData;
+const googleAnalyticsId = props.googleAnalyticsId || frontmatter.googleAnalyticsId;
 
 // Construct canonical URL - use provided canonical or generate from current URL
 const siteUrl = 'https://auditware.io';
 const canonicalUrl = canonical || new URL(Astro.url.pathname, siteUrl).toString();
 const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toString();
+
+// Default Organization Schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Auditware",
+  "url": siteUrl,
+  "logo": new URL("/images/HP-Grph-image.png", siteUrl).toString(),
+  "description": "Premier Web3 operational security audits, smart contract audits, and the Sentry OpSec monitoring platform.",
+  "foundingDate": "2020",
+  "sameAs": [
+    "https://twitter.com/auditware",
+    "https://linkedin.com/company/auditware"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "Sales",
+    "url": `${siteUrl}/audits`
+  }
+};
+
+// Website Schema for site search
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Auditware",
+  "url": siteUrl,
+  "description": description,
+  "publisher": {
+    "@type": "Organization",
+    "name": "Auditware"
+  }
+};
+
+// Combine schemas
+const allSchemas = [organizationSchema, websiteSchema];
+if (structuredData) {
+  allSchemas.push(structuredData);
+}
 ---
 
 <!DOCTYPE html>
@@ -36,22 +92,45 @@ const imageUrl = image.startsWith('http') ? image : new URL(image, siteUrl).toSt
   <meta property="og:url" content={canonicalUrl} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Auditware" />
+  <meta property="og:locale" content="en_US" />
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@auditware" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={imageUrl} />
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json" set:html={JSON.stringify(allSchemas)} />
   
   <!-- Favicon -->
   <link href="/images/favicon.png" rel="shortcut icon" type="image/x-icon" />
   <link href="/images/webclip.png" rel="apple-touch-icon" />
   
-  <!-- Fonts - Optimized Preloading -->
-  <link href="https://fonts.googleapis.com" rel="preconnect" />
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <!-- DNS Prefetch & Preconnect for Performance -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- Fonts - Optimized Loading with display=swap -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Google Analytics -->
+  {googleAnalyticsId && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+      <script define:vars={{ googleAnalyticsId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', googleAnalyticsId);
+      </script>
+    </>
+  )}
 </head>
 <body>
   <slot />

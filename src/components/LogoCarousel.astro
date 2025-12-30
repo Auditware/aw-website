@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 export interface Props {
   title?: string;
   subtitle?: string;
@@ -30,13 +32,24 @@ const { title, subtitle, logos } = Astro.props;
       <div class="logo-carousel-track">
         {logos.concat(logos).map((logo, index) => (
           <div class="logo-carousel-item" key={`${logo.name}-${index}`}>
-            <img 
-              src={logo.src} 
-              alt={logo.name}
-              width={logo.width || 120}
-              height={logo.height || 40}
-              loading="lazy"
-            />
+            {logo.src.startsWith('http') ? (
+              <img 
+                src={logo.src} 
+                alt={logo.name}
+                width={logo.width || 120}
+                height={logo.height || 40}
+                loading="lazy"
+              />
+            ) : (
+              <Image 
+                src={logo.src} 
+                alt={logo.name}
+                width={logo.width || 360}
+                height={logo.height || 120}
+                loading="lazy"
+                format="webp"
+              />
+            )}
           </div>
         ))}
       </div>
