@@ -14,11 +14,14 @@ import StatsSection from '../components/StatsSection.astro';
 import ExpertiseSection from '../components/ExpertiseSection.astro';
 import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
+import { homeTheme, themeToColorScheme } from '../styles/themes.ts';
+
+export const pageTheme = homeTheme;
 
 <Navbar />
 
 <ModernHero 
-  title="Web3's <span class='gradient-text'>Operational Security</span> Layer"
+  title="Web3's Operational Security Layer"
   description="Protect your organization with comprehensive OpSec audits and real-time monitoring. Comply with W3OS and SEAL Certs."
   primaryCta={{
     text: "Book An Audit",
@@ -42,6 +45,7 @@ import Footer from '../components/Footer.astro';
       icon: "https://images.typeform.com/images/85jp8NBEtu4u" 
     }
   ]}
+  colorScheme={themeToColorScheme(pageTheme)}
 />
 
 <LogoCarousel 

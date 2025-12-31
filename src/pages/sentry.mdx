@@ -6,19 +6,25 @@ image: "/images/Sentry-Grph-image.png"
 ---
 
 import Navbar from '../components/Navbar.astro';
-import SentryHero from '../components/SentryHero.astro';
+import ModernHero from '../components/ModernHero.astro';
 import SentryFeatures from '../components/SentryFeatures.astro';
 import Footer from '../components/Footer.astro';
+import { sentryTheme, themeToColorScheme } from '../styles/themes.ts';
+
+export const pageTheme = sentryTheme;
 
 <Navbar />
 
-<SentryHero 
-  title="Sentry"
-  disclaimer="Built by Apple security alumni to follow industry leading best practices."
-  ctaText="Join the waitlist"
-  ctaHref="/sentry-waitlist"
-  heroImage="/images/Frame-1.png"
-  heroImageAlt="Sentry Platform Interface"
+<ModernHero 
+  title="<img src='/images/Sentry-logo.png' width='280' alt='Sentry Logo' style='margin-bottom: 24px;' /><br/>OpSec at your scale."
+  description="The human element is your weakest point of security. Sentry helps you protect your people, accounts, and devices, and keeps watch over your organization to detect compromise at all levels. Built by Apple security alumni to follow industry leading best practices."
+  primaryCta={{
+    text: "Join the waitlist",
+    href: "/sentry-waitlist"
+  }}
+  imageUrl="/images/Frame-1.png"
+  imageAlt="Sentry Platform Interface"
+  colorScheme={themeToColorScheme(pageTheme)}
 />
 
 <SentryFeatures 
