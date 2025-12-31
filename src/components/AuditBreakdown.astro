@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 const { 
   experience = [],
   trustedBy = [],
@@ -25,7 +27,11 @@ const {
       </h1>
       <div class="client-list">
         {trustedBy.map(client => (
-          <img src={client.logo} loading="lazy" width="130" alt={client.name} class="client-png" />
+          client.logo.startsWith('http') ? (
+            <img src={client.logo} loading="lazy" width="130" alt={client.name} class="client-png" />
+          ) : (
+            <Image src={client.logo} alt={client.name} width={130} height={40} loading="lazy" format="webp" class="client-png" />
+          )
         ))}
       </div>
     </div>

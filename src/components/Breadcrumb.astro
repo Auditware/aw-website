@@ -1,0 +1,118 @@
+---
+export interface Props {
+  items: Array<{
+    name: string;
+    href?: string;
+  }>;
+}
+
+const { items } = Astro.props;
+const siteUrl = 'https://auditware.io';
+
+// Generate breadcrumb schema
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    ...(item.href && { "item": `${siteUrl}${item.href}` })
+  }))
+};
+---
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+<!-- Visual Breadcrumb -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="container">
+    <ol class="breadcrumb-list">
+      {items.map((item, index) => (
+        <li class="breadcrumb-item">
+          {item.href ? (
+            <a href={item.href} class="breadcrumb-link">
+              {item.name}
+            </a>
+          ) : (
+            <span class="breadcrumb-current" aria-current="page">
+              {item.name}
+            </span>
+          )}
+          {index < items.length - 1 && (
+            <svg class="breadcrumb-separator" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          )}
+        </li>
+      ))}
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .breadcrumb {
+    padding: var(--spacing-4) 0;
+    background: var(--color-background-secondary);
+    border-bottom: 1px solid var(--color-border-primary);
+  }
+  
+  .container {
+    max-width: var(--max-width-container);
+    margin: 0 auto;
+    padding: 0 2em;
+  }
+  
+  .breadcrumb-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+  }
+  
+  .breadcrumb-link {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+  
+  .breadcrumb-link:hover {
+    color: var(--color-primary-400);
+    text-decoration: underline;
+  }
+  
+  .breadcrumb-current {
+    color: var(--color-text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  .breadcrumb-separator {
+    color: var(--color-text-muted);
+    width: 16px;
+    height: 16px;
+  }
+  
+  @media (max-width: 767px) {
+    .breadcrumb-list {
+      font-size: var(--font-size-xs);
+    }
+    
+    .breadcrumb-separator {
+      width: 14px;
+      height: 14px;
+    }
+  }
+</style>
+

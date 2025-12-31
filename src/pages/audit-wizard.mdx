@@ -9,11 +9,14 @@ import Navbar from '../components/Navbar.astro';
 import ModernHero from '../components/ModernHero.astro';
 import FeatureStack from '../components/FeatureStack.astro';
 import Footer from '../components/Footer.astro';
+import { auditWizardTheme, themeToColorScheme } from '../styles/themes.ts';
+
+export const pageTheme = auditWizardTheme;
 
 <Navbar />
 
 <ModernHero 
-  title="All-in-one tool for auditing <span class='gradient-text'>smart contracts</span>"
+  title="All-in-one tool for auditing smart contracts"
   description="One-click scan for vulnerabilities, harness the insight of AI, intuitively craft unit tests and much more."
   primaryCta={{
     text: "Try Audit Wizard",
@@ -21,6 +24,21 @@ import Footer from '../components/Footer.astro';
   }}
   imageUrl="/images/lets-oaw.png"
   imageAlt="Audit Wizard Interface"
+  colorScheme={{
+    ...themeToColorScheme(pageTheme),
+    splotch1: { 
+      ...themeToColorScheme(pageTheme).splotch1,
+      position: { top: '20%', left: '-15%', width: '70%', height: '90%' }
+    },
+    splotch2: { 
+      ...themeToColorScheme(pageTheme).splotch2,
+      position: { bottom: '10%', right: '-15%', width: '55%', height: '75%' }
+    },
+    splotch3: { 
+      ...themeToColorScheme(pageTheme).splotch3,
+      position: { top: '60%', left: '40%', width: '50%', height: '55%' }
+    },
+  }}
 />
 
 <FeatureStack

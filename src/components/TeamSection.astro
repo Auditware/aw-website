@@ -30,7 +30,7 @@ const {
           </p>
           <div class="footer-social-block">
             {member.social.map(link => (
-              <a href={link.url} target="_blank" class="footer-social-link">
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="footer-social-link">
                 <img 
                   src={link.icon} 
                   loading="lazy" 

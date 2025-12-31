@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+
 const { 
   pressItems = []
 } = Astro.props;
@@ -7,7 +9,11 @@ const {
 <div class="press-grid">
   {pressItems.map(item => (
     <div class="press-item">
-      <img src={item.src} loading="lazy" width={item.width} alt={item.alt} class="press-logo" />
+      {item.src.startsWith('http') ? (
+        <img src={item.src} loading="lazy" width={item.width} alt={item.alt} class="press-logo" />
+      ) : (
+        <Image src={item.src} alt={item.alt} width={item.width || 200} height={item.height || 100} loading="lazy" format="webp" class="press-logo" />
+      )}
       <div class="text-block-7">{item.description}</div>
     </div>
   ))}
