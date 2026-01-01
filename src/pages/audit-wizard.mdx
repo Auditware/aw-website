@@ -13,6 +13,22 @@ import { auditWizardTheme, themeToColorScheme } from '../styles/themes.ts';
 
 export const pageTheme = auditWizardTheme;
 
+<script define:vars={{ 
+  gradient1Color: auditWizardTheme.palette.semantic.background.gradient1.color,
+  gradient1Opacity: auditWizardTheme.palette.semantic.background.gradient1.opacity,
+  gradient2Color: auditWizardTheme.palette.semantic.background.gradient2.color,
+  gradient2Opacity: auditWizardTheme.palette.semantic.background.gradient2.opacity,
+  gradient3Color: auditWizardTheme.palette.semantic.background.gradient3.color,
+  gradient3Opacity: auditWizardTheme.palette.semantic.background.gradient3.opacity
+}}>
+  document.body.style.setProperty('--theme-gradient-1-color', gradient1Color);
+  document.body.style.setProperty('--theme-gradient-1-opacity', gradient1Opacity);
+  document.body.style.setProperty('--theme-gradient-2-color', gradient2Color);
+  document.body.style.setProperty('--theme-gradient-2-opacity', gradient2Opacity);
+  document.body.style.setProperty('--theme-gradient-3-color', gradient3Color);
+  document.body.style.setProperty('--theme-gradient-3-opacity', gradient3Opacity);
+</script>
+
 <Navbar />
 
 <ModernHero 

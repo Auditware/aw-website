@@ -1,6 +1,7 @@
 ---
 import '../styles/tokens.css';
 import '../styles/global.css';
+import FixedBackground from '../components/FixedBackground.astro';
 
 export interface Props {
   title?: string;
@@ -133,6 +134,7 @@ if (structuredData) {
   )}
 </head>
 <body>
+  <FixedBackground />
   <slot />
   
   <script>
