@@ -262,18 +262,6 @@ export function themeToColorScheme(theme: PageTheme) {
       stop4: palette.primary[100], // Light tint
       stop5: palette.primary[200], // Subtle accent
     },
-    splotch1: { 
-      color: palette.semantic.background.gradient1.color, 
-      opacity: palette.semantic.background.gradient1.opacity 
-    },
-    splotch2: { 
-      color: palette.semantic.background.gradient2.color, 
-      opacity: palette.semantic.background.gradient2.opacity 
-    },
-    splotch3: { 
-      color: palette.semantic.background.gradient3.color, 
-      opacity: palette.semantic.background.gradient3.opacity 
-    },
     button: {
       primary: { 
         start: palette.primary[600], 
@@ -316,28 +304,9 @@ export function themeToColorScheme(theme: PageTheme) {
         opacity: 0.2 
       },
     },
-    heroBackground: {
-      start: { 
-        color: palette.primary[800], 
-        opacity: 0.3 
-      },
-      end: { 
-        color: palette.primary[800], 
-        opacity: 0.2 
-      },
-    },
   };
 }
 
-// Helper to get page background styles
-export function getPageBackgroundStyle(theme: PageTheme) {
-  const { palette } = theme;
-  
-  return {
-    background: `radial-gradient(ellipse at top, rgba(${palette.semantic.background.gradient1.color}, ${palette.semantic.background.gradient1.opacity}) 0%, transparent 50%), linear-gradient(180deg, #000000 0%, #0a0a0a 100%)`,
-    backgroundBefore: `radial-gradient(at 40% 20%, rgba(${palette.semantic.background.gradient1.color}, ${palette.semantic.background.gradient1.opacity + 0.05}) 0%, transparent 50%), radial-gradient(at 80% 0%, rgba(${palette.semantic.background.gradient2.color}, ${palette.semantic.background.gradient2.opacity}) 0%, transparent 50%), radial-gradient(at 0% 50%, rgba(${palette.semantic.background.gradient3.color}, ${palette.semantic.background.gradient3.opacity}) 0%, transparent 50%)`,
-  };
-}
 
 // Helper to generate CSS variables for a theme
 export function generateThemeCSSVariables(theme: PageTheme): string {

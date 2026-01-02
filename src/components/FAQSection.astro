@@ -15,11 +15,6 @@ const { faqs, title = "Frequently Asked Questions", subtitle } = Astro.props;
   <!-- Dotted Background Pattern -->
   <div class="dotted-background"></div>
   
-  <!-- Gradient Background Elements -->
-  <div class="gradient-bg-1"></div>
-  <div class="gradient-bg-2"></div>
-  <div class="gradient-bg-3"></div>
-  
   <div class="container">
     {(title || subtitle) && (
       <div class="faq-header">
@@ -99,41 +94,6 @@ const { faqs, title = "Frequently Asked Questions", subtitle } = Astro.props;
     opacity: 0.15;
     background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.4) 2px, transparent 0);
     background-size: 50px 50px;
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  /* Gradient Background Elements */
-  .gradient-bg-1 {
-    position: absolute;
-    top: -20%;
-    left: -10%;
-    width: 60%;
-    height: 80%;
-    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .gradient-bg-2 {
-    position: absolute;
-    bottom: -20%;
-    right: -10%;
-    width: 50%;
-    height: 70%;
-    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.06) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .gradient-bg-3 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }

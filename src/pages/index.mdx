@@ -18,22 +18,6 @@ import { homeTheme, themeToColorScheme } from '../styles/themes.ts';
 
 export const pageTheme = homeTheme;
 
-<script define:vars={{ 
-  gradient1Color: homeTheme.palette.semantic.background.gradient1.color,
-  gradient1Opacity: homeTheme.palette.semantic.background.gradient1.opacity,
-  gradient2Color: homeTheme.palette.semantic.background.gradient2.color,
-  gradient2Opacity: homeTheme.palette.semantic.background.gradient2.opacity,
-  gradient3Color: homeTheme.palette.semantic.background.gradient3.color,
-  gradient3Opacity: homeTheme.palette.semantic.background.gradient3.opacity
-}}>
-  document.body.style.setProperty('--theme-gradient-1-color', gradient1Color);
-  document.body.style.setProperty('--theme-gradient-1-opacity', gradient1Opacity);
-  document.body.style.setProperty('--theme-gradient-2-color', gradient2Color);
-  document.body.style.setProperty('--theme-gradient-2-opacity', gradient2Opacity);
-  document.body.style.setProperty('--theme-gradient-3-color', gradient3Color);
-  document.body.style.setProperty('--theme-gradient-3-opacity', gradient3Opacity);
-</script>
-
 <Navbar />
 
 <ModernHero 
