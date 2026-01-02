@@ -18,9 +18,6 @@ const experienceWithFill = sortedExperience.map(exp => ({
 ---
 
 <section class="audit-request-page">
-  <!-- Dotted Background Pattern -->
-  <div class="dotted-background"></div>
-  
   <!-- Hero Header Section -->
   <div class="audit-header">
     <div class="header-content">
@@ -241,30 +238,18 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
 <style>
   .audit-request-page {
-    background: #000000;
+    background: transparent;
     min-height: 100vh;
     padding-bottom: 80px;
     position: relative;
     overflow: hidden;
   }
 
-  /* Dotted Background Pattern */
-  .dotted-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.15;
-    background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.4) 2px, transparent 0);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: -1;
-  }
+  /* Dotted Background Pattern - Removed, using SiteBackground instead */
 
   /* Header Section - More Compact */
   .audit-header {
-    background: #000000;
+    background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 60px 20px 40px;
     margin-bottom: 40px;
