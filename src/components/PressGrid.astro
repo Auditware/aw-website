@@ -6,20 +6,28 @@ const {
 } = Astro.props;
 ---
 
-<div class="press-grid">
-  {pressItems.map(item => (
-    <div class="press-item">
-      {item.src.startsWith('http') ? (
-        <img src={item.src} loading="lazy" width={item.width} alt={item.alt} class="press-logo" />
-      ) : (
-        <Image src={item.src} alt={item.alt} width={item.width || 200} height={item.height || 100} loading="lazy" format="webp" class="press-logo" />
-      )}
-      <div class="text-block-7">{item.description}</div>
-    </div>
-  ))}
+<div class="press-section">
+  <div class="press-grid">
+    {pressItems.map(item => (
+      <div class="press-item">
+        {item.src.startsWith('http') ? (
+          <img src={item.src} loading="lazy" width={item.width} alt={item.alt} class="press-logo" />
+        ) : (
+          <Image src={item.src} alt={item.alt} width={item.width || 200} height={item.height || 100} loading="lazy" format="webp" class="press-logo" />
+        )}
+        <div class="text-block-7">{item.description}</div>
+      </div>
+    ))}
+  </div>
 </div>
 
 <style>
+  .press-section {
+    background: #000000;
+    position: relative;
+    overflow: hidden;
+  }
+
   .press-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -27,7 +35,8 @@ const {
     padding: 80px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    background: #000000;
+    position: relative;
+    z-index: 1;
   }
 
   .press-item {
@@ -35,16 +44,18 @@ const {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: #111111;
-    border: 1px solid #333333;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 32px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(8px);
   }
 
   .press-item:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 25px rgba(107, 33, 168, 0.15);
+    border-color: rgba(107, 33, 168, 0.3);
   }
 
   .press-logo {

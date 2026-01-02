@@ -232,12 +232,9 @@
   /* Gradients - Premium Purple Theme */
   --gradient-primary: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-primary-500) 100%);
   --gradient-secondary: linear-gradient(135deg, var(--color-neutral-800) 0%, var(--color-neutral-700) 100%);
-  --gradient-hero: radial-gradient(ellipse at top, rgba(139, 92, 246, 0.15) 0%, transparent 50%), linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+  --gradient-hero: #000000;
   --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
   --gradient-purple: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.1) 100%);
-  --gradient-mesh: radial-gradient(at 40% 20%, rgba(139, 92, 246, 0.3) 0%, transparent 50%), 
-                   radial-gradient(at 80% 0%, rgba(124, 58, 237, 0.2) 0%, transparent 50%),
-                   radial-gradient(at 0% 50%, rgba(109, 40, 217, 0.2) 0%, transparent 50%);
 
   /* Blur Effects */
   --blur-sm: blur(4px);

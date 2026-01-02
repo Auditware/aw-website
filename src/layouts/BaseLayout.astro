@@ -1,6 +1,7 @@
 ---
 import '../styles/tokens.css';
 import '../styles/global.css';
+import SiteBackground from '../components/SiteBackground.astro';
 
 export interface Props {
   title?: string;
@@ -133,6 +134,7 @@ if (structuredData) {
   )}
 </head>
 <body>
+  <SiteBackground />
   <slot />
   
   <script>
@@ -179,7 +181,7 @@ if (structuredData) {
 
   body {
     color: #fff;
-    background: var(--gradient-hero);
+    background: transparent;
     font-family: var(--font-family-body);
     font-size: 14px;
     line-height: 1.2;

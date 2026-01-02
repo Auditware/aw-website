@@ -18,12 +18,6 @@ const experienceWithFill = sortedExperience.map(exp => ({
 ---
 
 <section class="audit-request-page">
-  <!-- Cursor-reactive background -->
-  <div class="cursor-glow"></div>
-  
-  <!-- Dotted Background Pattern -->
-  <div class="dotted-background"></div>
-  
   <!-- Hero Header Section -->
   <div class="audit-header">
     <div class="header-content">
@@ -244,50 +238,18 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
 <style>
   .audit-request-page {
-    background: #000000;
+    background: transparent;
     min-height: 100vh;
     padding-bottom: 80px;
     position: relative;
     overflow: hidden;
   }
 
-  /* Cursor-reactive glow */
-  .cursor-glow {
-    position: fixed;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(79, 99, 255, 0.15) 0%, rgba(140, 131, 178, 0.08) 30%, transparent 70%);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    z-index: 0;
-    filter: blur(40px);
-  }
-
-  .audit-request-page:hover .cursor-glow {
-    opacity: 1;
-  }
-
-  /* Dotted Background Pattern */
-  .dotted-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0.15;
-    background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.4) 2px, transparent 0);
-    background-size: 50px 50px;
-    pointer-events: none;
-    z-index: -1;
-  }
+  /* Dotted Background Pattern - Removed, using SiteBackground instead */
 
   /* Header Section - More Compact */
   .audit-header {
-    background: #000000;
-    background-image: linear-gradient(135deg, rgba(79, 99, 255, 0.15) 0%, rgba(140, 131, 178, 0.08) 50%, transparent 100%);
+    background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 60px 20px 40px;
     margin-bottom: 40px;
@@ -375,7 +337,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
   .stat-number {
     font-size: 2.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     line-height: 1;
@@ -396,8 +358,8 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .contact-card {
-    background: linear-gradient(135deg, rgba(79, 99, 255, 0.08) 0%, rgba(0, 0, 0, 0.4) 100%);
-    border: 1px solid rgba(79, 99, 255, 0.2);
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.04) 0%, rgba(0, 0, 0, 0.4) 100%);
+    border: 1px solid rgba(30, 58, 138, 0.3);
     border-radius: 24px;
     padding: 32px;
     backdrop-filter: blur(12px);
@@ -440,7 +402,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
   .info-item .icon {
     width: 20px;
     height: 20px;
-    color: #4f63ff;
+    color: #1e3a8a;
     flex-shrink: 0;
   }
 
@@ -481,8 +443,8 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .section-card:hover {
-    border-color: rgba(79, 99, 255, 0.3);
-    box-shadow: 0 4px 24px rgba(79, 99, 255, 0.1);
+    border-color: rgba(30, 58, 138, 0.3);
+    box-shadow: 0 4px 24px rgba(30, 58, 138, 0.1);
   }
 
   .main-card {
@@ -540,9 +502,9 @@ const experienceWithFill = sortedExperience.map(exp => ({
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(79, 99, 255, 0.1);
+    background: rgba(30, 58, 138, 0.1);
     border-radius: 10px;
-    color: #4f63ff;
+    color: #1e3a8a;
     flex-shrink: 0;
   }
 
@@ -575,7 +537,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .experience-year-item.highlighted {
-    background: rgba(79, 99, 255, 0.1);
+    background: rgba(30, 58, 138, 0.1);
     transform: translateX(4px);
   }
 
@@ -598,7 +560,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
   .experience-year-value {
     font-size: 0.75rem;
-    color: #4f63ff;
+    color: #1e3a8a;
     font-weight: 600;
   }
 
@@ -612,14 +574,14 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
   .experience-fill {
     height: 100%;
-    background: linear-gradient(90deg, #4f63ff 0%, #8c83b2 100%);
+    background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%);
     border-radius: 3px;
     transition: all 0.8s ease;
-    box-shadow: 0 0 8px rgba(79, 99, 255, 0.3);
+    box-shadow: 0 0 8px rgba(30, 58, 138, 0.3);
   }
 
   .experience-year-item.highlighted .experience-fill {
-    box-shadow: 0 0 12px rgba(79, 99, 255, 0.6);
+    box-shadow: 0 0 12px rgba(30, 64, 175, 0.6);
   }
 
   /* Experience List */
@@ -644,7 +606,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
   .experience-dot {
     width: 8px;
     height: 8px;
-    background: #4f63ff;
+    background: #1e3a8a;
     border-radius: 50%;
     margin-top: 7px;
     flex-shrink: 0;
@@ -722,7 +684,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #4f63ff 0%, #8c83b2 100%);
+    background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
@@ -733,8 +695,8 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .service-card.featured {
-    border-color: rgba(79, 99, 255, 0.3);
-    background: rgba(79, 99, 255, 0.05);
+    border-color: rgba(30, 58, 138, 0.3);
+    background: rgba(30, 58, 138, 0.05);
   }
 
   .service-card.featured::before {
@@ -745,7 +707,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
     position: absolute;
     top: 16px;
     right: 16px;
-    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
     color: #ffffff;
     padding: 4px 10px;
     border-radius: 16px;
@@ -757,8 +719,8 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
   .service-card:hover,
   .service-card.active {
-    border-color: rgba(79, 99, 255, 0.4);
-    box-shadow: 0 8px 32px rgba(79, 99, 255, 0.15);
+    border-color: rgba(30, 58, 138, 0.4);
+    box-shadow: 0 8px 32px rgba(30, 58, 138, 0.15);
     transform: translateY(-2px);
   }
 
@@ -769,7 +731,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
   .details-toggle {
     cursor: pointer;
-    color: #4f63ff;
+    color: #1e3a8a;
     font-size: 0.875rem;
     font-weight: 500;
     list-style: none;
@@ -793,7 +755,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .details-toggle:hover {
-    color: #8c83b2;
+    color: #1e40af;
   }
 
   .details-content {
@@ -825,7 +787,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
   .service-tagline {
     font-size: 0.875rem;
-    color: #4f63ff;
+    color: #1e3a8a;
     font-weight: 500;
   }
 
@@ -879,7 +841,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .doc-icon {
-    color: #4f63ff;
+    color: #1e3a8a;
   }
 
   .service-features {
@@ -909,7 +871,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
   .meta-icon {
     width: 16px;
     height: 16px;
-    color: #4f63ff;
+    color: #1e3a8a;
   }
 
   /* Process Timeline - Compact Horizontal */
@@ -940,8 +902,8 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .step-card:hover {
-    background: rgba(79, 99, 255, 0.05);
-    border-color: rgba(79, 99, 255, 0.3);
+    background: rgba(30, 58, 138, 0.05);
+    border-color: rgba(30, 58, 138, 0.3);
     transform: translateY(-2px);
   }
 
@@ -958,13 +920,13 @@ const experienceWithFill = sortedExperience.map(exp => ({
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
     border-radius: 50%;
     font-size: 0.875rem;
     font-weight: 700;
     color: #ffffff;
     flex-shrink: 0;
-    box-shadow: 0 2px 8px rgba(79, 99, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.3);
   }
 
   .step-title-compact {
@@ -979,10 +941,10 @@ const experienceWithFill = sortedExperience.map(exp => ({
   .step-duration-compact {
     display: inline-block;
     padding: 2px 8px;
-    background: rgba(79, 99, 255, 0.1);
-    border: 1px solid rgba(79, 99, 255, 0.2);
+    background: rgba(30, 58, 138, 0.1);
+    border: 1px solid rgba(30, 58, 138, 0.2);
     border-radius: 10px;
-    color: #4f63ff;
+    color: #1e3a8a;
     font-size: 0.6875rem;
     font-weight: 500;
     white-space: nowrap;
@@ -994,7 +956,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
   .step-summary {
     cursor: pointer;
-    color: #4f63ff;
+    color: #1e3a8a;
     font-size: 0.75rem;
     font-weight: 500;
     list-style: none;
@@ -1017,7 +979,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .step-summary:hover {
-    color: #8c83b2;
+    color: #1e40af;
   }
 
   .step-description-compact {
@@ -1033,7 +995,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
     right: -12px;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(79, 99, 255, 0.3);
+    color: rgba(30, 58, 138, 0.3);
     font-size: 1.25rem;
     z-index: 1;
   }
@@ -1055,14 +1017,14 @@ const experienceWithFill = sortedExperience.map(exp => ({
   }
 
   .cta-button-primary {
-    background: linear-gradient(135deg, #4f63ff 0%, #8c83b2 100%);
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
     color: #ffffff;
-    box-shadow: 0 4px 16px rgba(79, 99, 255, 0.3);
+    box-shadow: 0 4px 16px rgba(30, 58, 138, 0.4);
   }
 
   .cta-button-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(79, 99, 255, 0.4);
+    box-shadow: 0 8px 24px rgba(30, 64, 175, 0.5);
   }
 
   .cta-button-secondary {
@@ -1073,7 +1035,7 @@ const experienceWithFill = sortedExperience.map(exp => ({
 
   .cta-button-secondary:hover {
     background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(79, 99, 255, 0.3);
+    border-color: rgba(30, 58, 138, 0.3);
     transform: translateY(-2px);
   }
 
@@ -1086,8 +1048,8 @@ const experienceWithFill = sortedExperience.map(exp => ({
   /* Final CTA */
   .final-cta {
     margin-top: 20px;
-    background: linear-gradient(135deg, rgba(79, 99, 255, 0.1) 0%, rgba(140, 131, 178, 0.05) 100%);
-    border: 1px solid rgba(79, 99, 255, 0.2);
+    background: linear-gradient(135deg, rgba(125, 211, 252, 0.04) 0%, rgba(186, 230, 253, 0.025) 100%);
+    border: 1px solid rgba(30, 58, 138, 0.3);
     border-radius: 24px;
     padding: 48px;
     text-align: center;
@@ -1200,20 +1162,6 @@ const experienceWithFill = sortedExperience.map(exp => ({
 </style>
 
 <script>
-  // Cursor-reactive glow effect
-  const cursorGlow = document.querySelector('.cursor-glow');
-  const auditPage = document.querySelector('.audit-request-page');
-  
-  if (cursorGlow && auditPage) {
-    auditPage.addEventListener('mousemove', (e) => {
-      const rect = auditPage.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      cursorGlow.style.left = `${x}px`;
-      cursorGlow.style.top = `${y}px`;
-    });
-  }
-
   // Scroll-based highlighting for service offerings and experience items
   const serviceCards = document.querySelectorAll('.service-card');
   const experienceItems = document.querySelectorAll('.experience-year-item');

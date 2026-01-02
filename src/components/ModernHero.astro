@@ -1,15 +1,6 @@
 ---
 import { Image } from 'astro:assets';
 
-export interface SplotchPosition {
-  top?: string;
-  bottom?: string;
-  left?: string;
-  right?: string;
-  width: string;
-  height: string;
-}
-
 export interface ColorScheme {
   // Gradient text colors (5 stops)
   gradientText: {
@@ -19,10 +10,6 @@ export interface ColorScheme {
     stop4: string;
     stop5: string;
   };
-  // Background gradient splotches
-  splotch1: { color: string; opacity: number; position?: SplotchPosition };
-  splotch2: { color: string; opacity: number; position?: SplotchPosition };
-  splotch3: { color: string; opacity: number; position?: SplotchPosition };
   // Button colors
   button: {
     primary: { start: string; end: string };
@@ -41,11 +28,6 @@ export interface ColorScheme {
     dotPattern: { color: string; opacity: number };
     gridPattern: { color: string; opacity: number };
     badge: { color: string; opacity: number };
-  };
-  // Hero background
-  heroBackground?: {
-    start: { color: string; opacity: number };
-    end: { color: string; opacity: number };
   };
 }
 
@@ -80,9 +62,6 @@ const defaultColorScheme: ColorScheme = {
     stop4: '243, 232, 255', // Light purple
     stop5: '233, 213, 255', // Subtle purple
   },
-  splotch1: { color: '139, 92, 246', opacity: 0.2 },
-  splotch2: { color: '124, 58, 237', opacity: 0.15 },
-  splotch3: { color: '79, 99, 255', opacity: 0.12 },
   button: {
     primary: { start: '139, 92, 246', end: '124, 58, 237' },
     primaryHover: { start: '167, 139, 250', end: '139, 92, 246' },
@@ -122,12 +101,6 @@ const cs = colorScheme;
   --gradient-text-3: ${cs.gradientText.stop3};
   --gradient-text-4: ${cs.gradientText.stop4};
   --gradient-text-5: ${cs.gradientText.stop5};
-  --splotch-1-color: ${cs.splotch1.color};
-  --splotch-1-opacity: ${cs.splotch1.opacity};
-  --splotch-2-color: ${cs.splotch2.color};
-  --splotch-2-opacity: ${cs.splotch2.opacity};
-  --splotch-3-color: ${cs.splotch3.color};
-  --splotch-3-opacity: ${cs.splotch3.opacity};
   --button-primary-start: ${cs.button.primary.start};
   --button-primary-end: ${cs.button.primary.end};
   --button-primary-hover-start: ${cs.button.primaryHover.start};
@@ -148,36 +121,6 @@ const cs = colorScheme;
   --badge-opacity: ${cs.accent.badge.opacity};
   --title-color: ${cs.text.title};
   --description-color: ${cs.text.description};
-  ${cs.heroBackground ? `
-  --hero-bg-start-color: ${cs.heroBackground.start.color};
-  --hero-bg-start-opacity: ${cs.heroBackground.start.opacity};
-  --hero-bg-end-color: ${cs.heroBackground.end.color};
-  --hero-bg-end-opacity: ${cs.heroBackground.end.opacity};
-  ` : ''}
-  ${cs.splotch1.position ? `
-  --splotch-1-top: ${cs.splotch1.position.top || 'auto'};
-  --splotch-1-bottom: ${cs.splotch1.position.bottom || 'auto'};
-  --splotch-1-left: ${cs.splotch1.position.left || 'auto'};
-  --splotch-1-right: ${cs.splotch1.position.right || 'auto'};
-  --splotch-1-width: ${cs.splotch1.position.width};
-  --splotch-1-height: ${cs.splotch1.position.height};
-  ` : ''}
-  ${cs.splotch2.position ? `
-  --splotch-2-top: ${cs.splotch2.position.top || 'auto'};
-  --splotch-2-bottom: ${cs.splotch2.position.bottom || 'auto'};
-  --splotch-2-left: ${cs.splotch2.position.left || 'auto'};
-  --splotch-2-right: ${cs.splotch2.position.right || 'auto'};
-  --splotch-2-width: ${cs.splotch2.position.width};
-  --splotch-2-height: ${cs.splotch2.position.height};
-  ` : ''}
-  ${cs.splotch3.position ? `
-  --splotch-3-top: ${cs.splotch3.position.top || 'auto'};
-  --splotch-3-bottom: ${cs.splotch3.position.bottom || 'auto'};
-  --splotch-3-left: ${cs.splotch3.position.left || 'auto'};
-  --splotch-3-right: ${cs.splotch3.position.right || 'auto'};
-  --splotch-3-width: ${cs.splotch3.position.width};
-  --splotch-3-height: ${cs.splotch3.position.height};
-  ` : ''}
 `}>
   <div class="container">
     <div class="hero-content">
@@ -262,9 +205,6 @@ const cs = colorScheme;
   
   <!-- Background Elements -->
   <div class="hero-bg-elements">
-    <div class="hero-gradient-1"></div>
-    <div class="hero-gradient-2"></div>
-    <div class="hero-gradient-3"></div>
     <div class="hero-grid-pattern"></div>
     <div class="hero-dotted-pattern"></div>
   </div>
@@ -279,16 +219,6 @@ const cs = colorScheme;
     overflow: hidden;
     padding: var(--spacing-8) 0;
     border-bottom: 1px solid var(--color-border-primary);
-  }
-
-  /* Dynamic Hero Background */
-  .hero[style*="--hero-bg-start-color"] {
-    background: linear-gradient(
-      180deg, 
-      rgba(var(--hero-bg-start-color), var(--hero-bg-start-opacity)) 0%, 
-      transparent 50%, 
-      rgba(var(--hero-bg-end-color), var(--hero-bg-end-opacity)) 100%
-    );
   }
   
   .hero-content {
@@ -388,7 +318,7 @@ const cs = colorScheme;
   .hero-image-container:hover .hero-image {
     transform: translateY(-8px);
     box-shadow: 0 0 0 1px rgba(var(--image-border-color), calc(var(--image-border-opacity) + 0.1)), 
-                0 12px 48px rgba(var(--splotch-1-color), 0.4);
+                0 12px 48px rgba(var(--image-border-color), 0.2);
   }
   
   .hero-image-glow {
@@ -423,40 +353,6 @@ const cs = colorScheme;
     pointer-events: none;
     z-index: 0;
   }
-  
-  .hero-gradient-1 {
-    position: absolute;
-    top: var(--splotch-1-top, -50%);
-    bottom: var(--splotch-1-bottom, auto);
-    left: var(--splotch-1-left, auto);
-    right: var(--splotch-1-right, -20%);
-    width: var(--splotch-1-width, 80%);
-    height: var(--splotch-1-height, 120%);
-    background: radial-gradient(ellipse, rgba(var(--splotch-1-color), var(--splotch-1-opacity)) 0%, transparent 50%);
-  }
-  
-  .hero-gradient-2 {
-    position: absolute;
-    top: var(--splotch-2-top, auto);
-    bottom: var(--splotch-2-bottom, -30%);
-    left: var(--splotch-2-left, -20%);
-    right: var(--splotch-2-right, auto);
-    width: var(--splotch-2-width, 60%);
-    height: var(--splotch-2-height, 80%);
-    background: radial-gradient(ellipse, rgba(var(--splotch-2-color), var(--splotch-2-opacity)) 0%, transparent 50%);
-  }
-
-  .hero-gradient-3 {
-    position: absolute;
-    top: var(--splotch-3-top, 50%);
-    bottom: var(--splotch-3-bottom, auto);
-    left: var(--splotch-3-left, auto);
-    right: var(--splotch-3-right, 10%);
-    width: var(--splotch-3-width, 40%);
-    height: var(--splotch-3-height, 60%);
-    background: radial-gradient(circle, rgba(var(--splotch-3-color), var(--splotch-3-opacity)) 0%, transparent 60%);
-  }
-
 
   /* Dynamic Button Styling */
   .hero .btn-primary {
