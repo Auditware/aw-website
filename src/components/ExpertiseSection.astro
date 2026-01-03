@@ -86,7 +86,7 @@ const {
 
 <style>
   .expertise-section {
-    padding: var(--spacing-16) 0;
+    padding: var(--spacing-4) 0;
     background: transparent;
     position: relative;
   }
@@ -118,17 +118,26 @@ const {
   .expertise-content {
     position: relative;
     z-index: 1;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   .expertise-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-16);
+    gap: var(--spacing-10);
     align-items: start;
   }
   
+  .expertise-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
   .expertise-text h2 {
-    margin-bottom: var(--spacing-7);
+    margin-top: 0;
+    margin-bottom: var(--spacing-5);
     color: var(--color-text-primary);
     font-size: var(--font-size-4xl);
     font-weight: var(--font-weight-black);
@@ -137,11 +146,16 @@ const {
   }
   
   .expertise-description {
-    margin-bottom: var(--spacing-10);
+    margin-bottom: var(--spacing-6);
     color: var(--color-text-secondary);
     line-height: var(--line-height-normal);
     font-size: var(--font-size-base);
     max-width: 90%;
+  }
+  
+  /* Align first highlight with first metric card */
+  .expertise-highlights {
+    padding-top: var(--spacing-2);
   }
   
   .expertise-highlights {
@@ -175,7 +189,10 @@ const {
   }
   
   .expertise-visual {
-    padding-top: var(--spacing-2);
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
   
   .expertise-metrics {
@@ -190,10 +207,22 @@ const {
   
   .metric-card {
     background: var(--color-background-primary);
-    border: 1px solid var(--color-border-primary);
+    border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: var(--radius-lg);
     padding: var(--spacing-7) var(--spacing-6);
     text-align: center;
+    transition: all var(--transition-base);
+  }
+  
+  .metric-card:hover {
+    border-color: var(--color-border-purple);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+  }
+  
+  .metric-card:focus-within {
+    border-color: var(--color-border-purple);
+    box-shadow: var(--shadow-glow);
   }
   
   .metric-title {
@@ -225,12 +254,17 @@ const {
   
   @media (max-width: 1199px) {
     .expertise-section {
-      padding: var(--spacing-12) 0;
+      padding: var(--spacing-3) 0;
+    }
+    
+    .expertise-content {
+      margin-top: 0;
+      margin-bottom: 0;
     }
     
     .expertise-grid {
       grid-template-columns: 1fr;
-      gap: var(--spacing-12);
+      gap: var(--spacing-8);
       text-align: center;
     }
     
@@ -256,7 +290,12 @@ const {
   
   @media (max-width: 767px) {
     .expertise-section {
-      padding: var(--spacing-12) 0;
+      padding: var(--spacing-3) 0;
+    }
+    
+    .expertise-content {
+      margin-top: 0;
+      margin-bottom: 0;
     }
     
     .expertise-text h2 {
